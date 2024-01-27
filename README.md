@@ -1,33 +1,31 @@
-# Tech.Dive-Project-G8
+# Hack.Diversity Tech Dive Template
 
-Hack.Diverity Project Repository
+## Getting Started
 
-This is a project repository for a CRUD application developed by the team at Hack.Diversity Fellowship. The application is designed for Massachusetts General Hospital (MGH).
+This skeleton contains two different applications -- a front end, or "client," created with "Create React App," and a back end, or "API," created with Express.
 
-## Team Members
+In order to make both of them work together, you'll need to run both, but you can run just one or the other to start. As you begin working on this project, you'll first focus on the client, so you can more or less ignore the API portion of the code for now.
 
-- Emily Flores
-- Yonas Mekonnen
-- Debrin Adon Suero
-- Nisaury Tejeda
+## Client
 
-## Project Overview
+In order to run the client, you'll run the following commands:
 
-This project is a CRUD (Create, Read, Update, Delete) application designed to manage patient data at MGH. It provides an intuitive interface for data entry and management, ensuring efficient and secure handling of patient information.
+```bash
+cd client/
+npm i
+npm start
+```
 
-## Technology Stack
+You should then be able to visit `localhost:3000` in your browser and see the client running. If you make changes in the `App.js` file, you should see them reflected.
 
-MERN Stack
-Monogo, Express.js, React.js and Node
+## API
 
-## Setup and Installation
+In order to run the server, you'll run the following commands:
 
-`git clone https://github.com/JoseDiazCodes/Tech.Dive-Project-G8.git`
+```bash
+cd api/
+npm i
+npm start
+```
 
-## Usage
-
-- TBA [Provide instructions on how to use the application]
-
-## Contributing
-
-- TBA[Provide instructions on how contributors can contribute to this project]
+You should then be able to visit `localhost:9000` in your browser and see the server running.
