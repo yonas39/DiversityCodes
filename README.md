@@ -2,8 +2,6 @@
 
 Hack.Diverity Project Repository
 
-# Tech.Dive-Project-G8
-
 This is a project repository for a CRUD application developed by the team at Hack.Diversity Fellowship. The application is designed for Massachusetts General Hospital (MGH).
 
 ## Team Members
