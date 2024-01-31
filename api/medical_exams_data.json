@@ -1,0 +1,109 @@
+{
+    "success": true,
+    "exams": [
+      {
+        "_id": "61e83d679dc59e6e8e11a1cf",
+        "patientId": "aaaa",
+        "age": -85,
+        "sex": "F",
+        "zipCode": "720",
+        "bmi": 27.46,
+        "__v": 0,
+        "examId": "Exam-1",
+        "keyFindings": "lungs appear clear with no nodule, airspace consolidation or pleural effusion",
+        "brixiaScores": "1,2,3,4",
+        "imageURL": "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/COVID-19-AR-16434350_XR_CHEST_AP_PORTABLE_1.png"
+      },
+      {
+        "_id": "61e83d679dc59e6e8e11a1c7",
+        "patientId": "COVID-19-AR-16406491",
+        "age": 49,
+        "sex": "F",
+        "zipCode": "721",
+        "bmi": 43.85,
+        "__v": 0,
+        "examId": "Exam-1",
+        "keyFindings": "lungs appear clear with no nodule, airspace consolidation or pleural effusion",
+        "brixiaScores": "1,2,3,4",
+        "imageURL": "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/COVID-19-AR-16406491_XR_CHEST_AP_PORTABLE_1.png"
+      },
+      {
+        "_id": "61eeb632b9e71f0016fe0f4d",
+        "patientId": "COVID-805187",
+        "age": 66,
+        "sex": "M",
+        "bmi": 30,
+        "zipCode": "27850",
+        "__v": 0,
+        "examId": "Exam-955770",
+        "keyFindings": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet suscipit, quo, vitae sapiente ex veritatis cupiditate aperiam culpa magni deleniti explicabo, rerum est consectetur pariatur! Itaque facere ducimus magni ex.",
+        "brixiaScores": "1,2,3,4,5,6",
+        "imageURL": "https://picsum.photos/200/200"
+      },
+      {
+        "_id": "62059cba57da3edd1c049c17",
+        "patientId": "COVID-728003",
+        "age": 35,
+        "sex": "M",
+        "bmi": 49,
+        "zipCode": "66225",
+        "__v": 0,
+        "examId": "Exam-311279",
+        "keyFindings": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet suscipit, quo, vitae sapiente ex veritatis cupiditate aperiam culpa magni deleniti explicabo, rerum est consectetur pariatur! Itaque facere ducimus magni ex.",
+        "brixiaScores": "1,2,3,4,5,6",
+        "imageURL": "https://picsum.photos/200/200"
+      },
+      {
+        "_id": "61e83d679dc59e6e8e11a1c4",
+        "patientId": "COVID-19-AR-16406513777",
+        "age": 44,
+        "sex": "M",
+        "zipCode": "722",
+        "bmi": 32.3,
+        "__v": 0,
+        "examId": "Exam-3",
+        "keyFindings": "streaky opacities mainly in the lung bases near the hemidiaphragms. Increased somewhat patchy opacities are now seen in both lung bases more conspicuous compared to the prior studies.",
+        "brixiaScores": "1,2,3,4",
+        "imageURL": "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/COVID-19-AR-16406513_XR_CHEST_AP_PORTABLE_3.png"
+      },
+      {
+        "_id": "61e83d679dc59e6e8e11a1cb",
+        "patientId": "AAAA",
+        "age": 5656,
+        "sex": "F",
+        "zipCode": "720",
+        "bmi": 56.46,
+        "__v": 0,
+        "examId": "Exam-2", 
+        "keyFindings": "normal chest radiograph",
+        "brixiaScores": "1,2,3,4",
+        "imageURL": "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/COVID-19-AR-16406513777_XR_CHEST_AP_PORTABLE_2.png"
+      },
+      {
+        "_id": "61e83d679dc59e6e8e11a1c3",
+        "patientId": "COVID-19-AR-16406513777",
+        "age": 56,
+        "sex": "F",
+        "zipCode": "722",
+        "bmi": 28.9,
+        "__v": 0,
+        "examId": "Exam-2",
+        "keyFindings": "pleural effusion on the left side, along with bilateral infiltrates, and small consolidations",
+        "brixiaScores": "1,2,3,4,5,6",
+        "imageURL": "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/COVID-19-AR-16406513777_XR_CHEST_AP_PORTABLE_2.png"
+      },
+      {
+        "_id": "61e83d679dc59e6e8e11a1c2",
+        "patientId": "COVID-19-AR-16434350",
+        "age": 67,
+        "sex": "M",
+        "zipCode": "723",
+        "bmi": 24.7,
+        "__v": 0,
+        "examId": "Exam-3",
+        "keyFindings": "ground-glass opacities and consolidations in bilateral lungs, suggestive of COVID-19 pneumonia",
+        "brixiaScores": "1,2,3,4,5,6",
+        "imageURL": "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/COVID-19-AR-16434350_XR_CHEST_AP_PORTABLE_3.png"
+      }
+    ]
+  }
