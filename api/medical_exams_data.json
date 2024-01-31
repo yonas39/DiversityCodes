@@ -3,8 +3,8 @@
     "exams": [
       {
         "_id": "61e83d679dc59e6e8e11a1cf",
-        "patientId": "aaaa",
-        "age": -85,
+        "patientId": "COVID-19-AR-17293893",
+        "age": 85,
         "sex": "F",
         "zipCode": "720",
         "bmi": 27.46,
@@ -36,9 +36,9 @@
         "zipCode": "27850",
         "__v": 0,
         "examId": "Exam-955770",
-        "keyFindings": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet suscipit, quo, vitae sapiente ex veritatis cupiditate aperiam culpa magni deleniti explicabo, rerum est consectetur pariatur! Itaque facere ducimus magni ex.",
+        "keyFindings": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet suscipit, quo, vitae sapiente ex veritatis cupiditate.",
         "brixiaScores": "1,2,3,4,5,6",
-        "imageURL": "https://picsum.photos/200/200"
+        "imageURL": "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/COVID-19-AR-16406496_XR_CHEST_AP_ONLY_3.png"
       },
       {
         "_id": "62059cba57da3edd1c049c17",
@@ -49,9 +49,9 @@
         "zipCode": "66225",
         "__v": 0,
         "examId": "Exam-311279",
-        "keyFindings": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet suscipit, quo, vitae sapiente ex veritatis cupiditate aperiam culpa magni deleniti explicabo, rerum est consectetur pariatur! Itaque facere ducimus magni ex.",
+        "keyFindings": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum est consectetur pariatur! Itaque facere ducimus magni ex.",
         "brixiaScores": "1,2,3,4,5,6",
-        "imageURL": "https://picsum.photos/200/200"
+        "imageURL": "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/COVID-19-AR-16406502_XR_CHEST_PA_AND_LATERAL_4.png"
       },
       {
         "_id": "61e83d679dc59e6e8e11a1c4",
@@ -69,7 +69,7 @@
       {
         "_id": "61e83d679dc59e6e8e11a1cb",
         "patientId": "AAAA",
-        "age": 5656,
+        "age": 59,
         "sex": "F",
         "zipCode": "720",
         "bmi": 56.46,
@@ -77,7 +77,7 @@
         "examId": "Exam-2", 
         "keyFindings": "normal chest radiograph",
         "brixiaScores": "1,2,3,4",
-        "imageURL": "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/COVID-19-AR-16406513777_XR_CHEST_AP_PORTABLE_2.png"
+        "imageURL": "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/COVID-19-AR-16424082_XR_CHEST_AP_PORTABLE_2.png"
       },
       {
         "_id": "61e83d679dc59e6e8e11a1c3",
@@ -90,7 +90,7 @@
         "examId": "Exam-2",
         "keyFindings": "pleural effusion on the left side, along with bilateral infiltrates, and small consolidations",
         "brixiaScores": "1,2,3,4,5,6",
-        "imageURL": "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/COVID-19-AR-16406513777_XR_CHEST_AP_PORTABLE_2.png"
+        "imageURL": "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/COVID-19-AR-16434381_XR_CHEST_AP_PORTABLE_2.png"
       },
       {
         "_id": "61e83d679dc59e6e8e11a1c2",
@@ -103,7 +103,7 @@
         "examId": "Exam-3",
         "keyFindings": "ground-glass opacities and consolidations in bilateral lungs, suggestive of COVID-19 pneumonia",
         "brixiaScores": "1,2,3,4,5,6",
-        "imageURL": "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/COVID-19-AR-16434350_XR_CHEST_AP_PORTABLE_3.png"
+        "imageURL": "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/COVID-19-AR-16406504_XR_CHEST_AP_PORTABLE_2.png"
       }
     ]
   }
