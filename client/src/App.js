@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          Test{response}
+          {response}
         </p>
       </header>
     </div>
