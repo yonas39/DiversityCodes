@@ -1,10 +1,24 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useApi } from "../hooks/use-api"
 
 function ExamView() {
 	const { response, error } = useApi({ path: "exams" })
 
-	console.log("Response:", response)
+	useEffect(() => {
+		console.log("Response:", response)
+		if (response && Array.isArray(response)) {
+			response.forEach((exam, index) => {
+				console.log("Patient ID:", exam.patientId)
+				console.log("Age:", exam.age)
+				console.log("Sex:", exam.sex)
+				console.log("Zip Code:", exam.zipCode)
+				console.log("BMI:", exam.bmi)
+				console.log("Exam ID:", exam.examId)
+				console.log("Key Findings:", exam.keyFindings)
+				console.log("Brixia Scores:", exam.brixiaScores)
+			})
+		}
+	}, [response])
 
 	if (error) {
 		return <div>Error: {JSON.stringify(error)}</div>
