@@ -1,32 +1,41 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { useApi } from "../hooks/use-api"
+// import React, { useEffect } from "react"
 
 function ExamView() {
 	const { response, error } = useApi({ path: "exams" })
 
-	useEffect(() => {
-		console.log("Response:", response)
-		if (response && Array.isArray(response)) {
-			response.forEach((exam, index) => {
-				console.log("Patient ID:", exam.patientId)
-				console.log("Age:", exam.age)
-				console.log("Sex:", exam.sex)
-				console.log("Zip Code:", exam.zipCode)
-				console.log("BMI:", exam.bmi)
-				console.log("Exam ID:", exam.examId)
-				console.log("Key Findings:", exam.keyFindings)
-				console.log("Brixia Scores:", exam.brixiaScores)
-			})
-		}
-	}, [response])
+	// useEffect(() => {
+	// 	console.log("Response: Exam View", response)
+	// 	if (response && response.exams && Array.isArray(response.exams)) {
+	// 		response.exams.forEach((exam) => {
+	// 			if (exam) {
+	// 				// Ensure exam is not null
+	// 				console.log("Patient ID:", exam.patientId)
+	// 				console.log("Age:", exam.age)
+	// 				console.log("Sex:", exam.sex)
+	// 				console.log("Zip Code:", exam.zipCode)
+	// 				console.log("BMI:", exam.bmi)
+	// 				console.log("Exam ID:", exam.examId)
+	// 				console.log("Key Findings:", exam.keyFindings)
+	// 				console.log("Brixia Scores:", exam.brixiaScores)
+	// 			}
+	// 		})
+	// 	}
+	// }, [response])
 
 	if (error) {
 		return <div>Error: {JSON.stringify(error)}</div>
 	}
 
+	// Display a loading message if the response has not yet been received
+	if (!response) {
+		return <div>Loading exams data...</div> // This is where you add the loading indicator
+	}
+
 	return (
 		<div className="ExamView">
-			{response && Array.isArray(response) && (
+			{response && response.exams && Array.isArray(response.exams) && (
 				<table>
 					<thead>
 						<tr>
@@ -42,18 +51,10 @@ function ExamView() {
 						</tr>
 					</thead>
 					<tbody>
-						{response.map((exam, index) => {
-							console.log("Patient ID:", exam.patientId)
-							console.log("Age:", exam.age)
-							console.log("Sex:", exam.sex)
-							console.log("Zip Code:", exam.zipCode)
-							console.log("BMI:", exam.bmi)
-							console.log("Exam ID:", exam.examId)
-							console.log("Key Findings:", exam.keyFindings)
-							console.log("Brixia Scores:", exam.brixiaScores)
-							console.log("Image URL:", exam.imageURL)
-							return (
-								<tr key={index}>
+						{response.exams
+							.filter((exam) => exam != null)
+							.map((exam, index) => (
+								<tr key={exam._id || index}>
 									<td>{exam.patientId}</td>
 									<td>{exam.age}</td>
 									<td>{exam.sex}</td>
@@ -62,10 +63,17 @@ function ExamView() {
 									<td>{exam.examId}</td>
 									<td>{exam.keyFindings}</td>
 									<td>{exam.brixiaScores}</td>
-									<td>{exam.imageURL}</td>
+									<td>
+										<a
+											href={exam.imageURL}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											View Image
+										</a>
+									</td>
 								</tr>
-							)
-						})}
+							))}
 					</tbody>
 				</table>
 			)}
