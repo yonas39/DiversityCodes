@@ -1,19 +1,15 @@
-import './App.css';
-
-import { useApi } from './hooks/use-api';
+import React from "react"
+import "./App.css"
+import ExamView from "./pages/ExamView"
+import Navbar from "./components/NavBar" // Import Navbar // Import Navbar
 
 function App() {
-  const { response } = useApi();
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Test{response}
-        </p>
-      </header>
-    </div>
-  );
+	return (
+		<div className="App">
+			<Navbar /> {/* Render Navbar */}
+			<ExamView />
+		</div>
+	)
 }
 
-export default App;
+export default App
