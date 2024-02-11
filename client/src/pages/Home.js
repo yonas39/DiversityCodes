@@ -1,8 +1,10 @@
 import React from "react";
 import { useApi } from "../hooks/use-api";
-import { useEffect } from "react";
+import { useState } from "react";
 
 const Home = () => {
+  const [search, setSearch] = useState("");
+  console.log(search);
   const { response, error } = useApi({ path: "exams" });
 
   if (error) {
@@ -18,7 +20,8 @@ const Home = () => {
     <div className="ExamView">
       <p>
         {/* We need to add the functionaltiy for this search bar */}
-        Search : <input type="text"></input>
+        Search :
+        <input type="text" onChange={(e) => setSearch(e.target.value)}></input>
       </p>
       {response && response.exams && Array.isArray(response.exams) && (
         <table>
@@ -37,7 +40,44 @@ const Home = () => {
           </thead>
           <tbody>
             {response.exams
-              .filter((exam) => exam != null)
+              .filter((exam) => {
+                return (
+                  exam != null &&
+                  (search.trim() === "" ||
+                    (exam &&
+                      exam.patientId &&
+                      exam.patientId
+                        .toLowerCase()
+                        .includes(search.trim().toLowerCase())))
+
+                  // ALL the search filters I added are optional we can use or get-rid of them if we want to ...
+                  // ||
+                  // exam.age
+                  //   .toString()
+                  //   .toLowerCase()
+                  //   .includes(search.trim().toLowerCase()) ||
+                  // exam.sex
+                  //   .toLowerCase()
+                  //   .includes(search.trim().toLowerCase()) ||
+                  // exam.zipCode
+                  //   .toString()
+                  //   .toLowerCase()
+                  //   .includes(search.trim().toLowerCase()) ||
+                  // exam.bmi
+                  //   .toString()
+                  //   .toLowerCase()
+                  //   .includes(search.trim().toLowerCase()) ||
+                  // exam.examId
+                  //   .toLowerCase()
+                  //   .includes(search.trim().toLowerCase()) ||
+                  // exam.keyFindings
+                  //   .toLowerCase()
+                  //   .includes(search.trim().toLowerCase()) ||
+                  // exam.brixiaScores
+                  //   .toLowerCase()
+                  //   .includes(search.trim().toLowerCase())
+                );
+              })
               .map((exam, index) => (
                 <tr key={exam._id || index}>
                   <td>{exam.patientId}</td>
