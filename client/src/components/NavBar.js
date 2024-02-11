@@ -1,23 +1,36 @@
-import React from "react";
-import { Link } from "react-router-dom"; // need to install : npm install react-router-dom
+import React from "react"
+import { Link } from "react-router-dom"
+import {
+	NavigationMenu,
+	NavigationMenuContent,
+	NavigationMenuItem,
+	NavigationMenuLink,
+	NavigationMenuList,
+	NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu"
 
-const Navbar = () => {
-  return (
-    <nav className="navbar">
-      <ul className="navbar-nav">
-        <li className="nav-item">
-          <Link to="/" className="nav-link">
-            Home
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/admin" className="nav-link">
-            Admin
-          </Link>
-        </li>
-      </ul>
-    </nav>
-  );
-};
+const NavBar = () => {
+	return (
+		<nav className="flex items-center justify-center p-6 bg-grey-500">
+			<NavigationMenu>
+				<NavigationMenuList className="space-x-4">
+					<NavigationMenuItem>
+						<Link to="/" className="text-xl text-black hover:text-blue-500">
+							Home
+						</Link>
+					</NavigationMenuItem>
+					<NavigationMenuItem>
+						<Link
+							to="/admin"
+							className="text-xl text-black hover:text-blue-300"
+						>
+							Admin
+						</Link>
+					</NavigationMenuItem>
+				</NavigationMenuList>
+			</NavigationMenu>
+		</nav>
+	)
+}
 
-export default Navbar;
+export default NavBar
