@@ -1,84 +1,58 @@
 import React from "react"
 import { useApi } from "../hooks/use-api"
-// import React, { useEffect } from "react"
 
 function ExamView() {
-	const { response, error } = useApi({ path: "exams" })
+    const { response, error } = useApi({ path: "exams" })
 
-	// useEffect(() => {
-	// 	console.log("Response: Exam View", response)
-	// 	if (response && response.exams && Array.isArray(response.exams)) {
-	// 		response.exams.forEach((exam) => {
-	// 			if (exam) {
-	// 				// Ensure exam is not null
-	// 				console.log("Patient ID:", exam.patientId)
-	// 				console.log("Age:", exam.age)
-	// 				console.log("Sex:", exam.sex)
-	// 				console.log("Zip Code:", exam.zipCode)
-	// 				console.log("BMI:", exam.bmi)
-	// 				console.log("Exam ID:", exam.examId)
-	// 				console.log("Key Findings:", exam.keyFindings)
-	// 				console.log("Brixia Scores:", exam.brixiaScores)
-	// 			}
-	// 		})
-	// 	}
-	// }, [response])
+    if (error) {
+        return <div>Error: {JSON.stringify(error)}</div>
+    }
 
-	if (error) {
-		return <div>Error: {JSON.stringify(error)}</div>
-	}
+    if (!response) {
+        return <div>Loading exams data...</div>
+    }
 
-	// Display a loading message if the response has not yet been received
-	if (!response) {
-		return <div>Loading exams data...</div> // This is where you add the loading indicator
-	}
-
-	return (
-		<div className="ExamView">
-			{response && response.exams && Array.isArray(response.exams) && (
-				<table>
-					<thead>
-						<tr>
-							<th>Patient ID</th>
-							<th>Age</th>
-							<th>Sex</th>
-							<th>Zip Code</th>
-							<th>BMI</th>
-							<th>Exam ID</th>
-							<th>Key Findings</th>
-							<th>Brixia Scores</th>
-							<th>Image URL</th>
-						</tr>
-					</thead>
-					<tbody>
-						{response.exams
-							.filter((exam) => exam != null)
-							.map((exam, index) => (
-								<tr key={exam._id || index}>
-									<td>{exam.patientId}</td>
-									<td>{exam.age}</td>
-									<td>{exam.sex}</td>
-									<td>{exam.zipCode}</td>
-									<td>{exam.bmi}</td>
-									<td>{exam.examId}</td>
-									<td>{exam.keyFindings}</td>
-									<td>{exam.brixiaScores}</td>
-									<td>
-										<a
-											href={exam.imageURL}
-											target="_blank"
-											rel="noopener noreferrer"
-										>
-											View Image
-										</a>
-									</td>
-								</tr>
-							))}
-					</tbody>
-				</table>
-			)}
-		</div>
-	)
+    return (
+        <div className="admin-container bg-gray-800 text-white p-6 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold mb-4">Exam View</h2>
+            {response && response.exams && Array.isArray(response.exams) && (
+                <table className="border-collapse border border-gray-600 w-full">
+                    <thead>
+                        <tr className="bg-gray-700">
+                            <th className="px-4 py-2">Patient ID</th>
+                            <th className="px-4 py-2">Age</th>
+                            <th className="px-4 py-2">Sex</th>
+                            <th className="px-4 py-2">Zip Code</th>
+                            <th className="px-4 py-2">BMI</th>
+                            <th className="px-4 py-2">Exam ID</th>
+                            <th className="px-4 py-2">Key Findings</th>
+                            <th className="px-4 py-2">Brixia Scores</th>
+                            <th className="px-4 py-2">Image URL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {response.exams
+                            .filter((exam) => exam != null)
+                            .map((exam, index) => (
+                                <tr key={exam._id || index} className="bg-gray-800">
+                                    <td className="border border-gray-600 px-4 py-2">{exam.patientId}</td>
+                                    <td className="border border-gray-600 px-4 py-2">{exam.age}</td>
+                                    <td className="border border-gray-600 px-4 py-2">{exam.sex}</td>
+                                    <td className="border border-gray-600 px-4 py-2">{exam.zipCode}</td>
+                                    <td className="border border-gray-600 px-4 py-2">{exam.bmi}</td>
+                                    <td className="border border-gray-600 px-4 py-2">{exam.examId}</td>
+                                    <td className="border border-gray-600 px-4 py-2">{exam.keyFindings}</td>
+                                    <td className="border border-gray-600 px-4 py-2">{exam.brixiaScores}</td>
+                                    <td className="border border-gray-600 px-4 py-2">
+                                        <a href={exam.imageURL} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">View Image</a>
+                                    </td>
+                                </tr>
+                            ))}
+                    </tbody>
+                </table>
+            )}
+        </div>
+    )
 }
 
 export default ExamView
