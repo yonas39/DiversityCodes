@@ -19,3 +19,31 @@
 .App-link {
   color: #61dafb;
 }
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem; 
+  background-color: #ffffffe1;
+  color: rgb(0, 0, 0);
+}
+
+.logo-container {
+  margin-right: auto;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.nav-link {
+  font-size: 1.3rem; 
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  transition: color 0.3s; 
+}
+
+.nav-link:hover {
+  color: #737dee; 
+}
