@@ -21,6 +21,14 @@ const NavBar = () => {
 					</NavigationMenuItem>
 					<NavigationMenuItem>
 						<Link
+							to="/exam"
+							className="text-xl text-black hover:text-blue-300"
+						>
+							Exams
+						</Link>
+					</NavigationMenuItem>
+					<NavigationMenuItem>
+						<Link
 							to="/admin"
 							className="text-xl text-black hover:text-blue-300"
 						>

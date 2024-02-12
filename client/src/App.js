@@ -6,6 +6,7 @@ import "./App.css"
 import Home from "./pages/Home"
 import Navbar from "./components/NavBar" // Import Navbar
 import Admin from "./pages/Admin"
+import ExamView from "pages/ExamView"
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="admin" element={<Admin />} />
+				<Route path="exam" element={<ExamView />} />
 			</Routes>
 		</div>
 	)
