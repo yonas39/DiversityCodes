@@ -7,11 +7,16 @@ const ExamSchema = new mongoose.Schema({
 	sex: String,
 	zipCode: String,
 	bmi: Number,
-	__v: Number,
+	latestWeight: Number,
 	examId: String,
 	keyFindings: String,
 	brixiaScores: String,
 	imageURL: String,
+	ICU_Admit: String,
+	numberOfAdmits: Number,
+	mortality: String,
+	keyFindings: String,
+	additionalNotes: String,
 })
 
 module.exports = mongoose.model("Exam", ExamSchema)
