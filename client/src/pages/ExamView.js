@@ -1,15 +1,47 @@
-import React from "react"
-import { useApi } from "../hooks/use-api"
+import React, { useState } from "react";
+import { useApi } from "../hooks/use-api";
 
 function ExamView() {
-    const { response, error } = useApi({ path: "exams" })
+    const { response, error } = useApi({ path: "exams" });
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [isUpdating, setIsUpdating] = useState(false);
+    const [selectedExamId, setSelectedExamId] = useState(null);
+
+    // updating an exam
+    const handleUpdateExam = (examId) => {
+        // TODO: open admin or navigate to an update page
+        setIsUpdating(true);
+        setSelectedExamId(examId);
+    };
+
+    // deleting an exam
+    const handleDeleteExam = async (examId) => {
+        // TODO: send a request to backend API to delete the exam
+        setIsDeleting(true);
+        try {
+            const response = await fetch(`/api/exams/${examId}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            if (!response.ok) {
+                throw new Error("Failed to delete exam");
+            }
+            // fetch the updated list of exams from the server
+        } catch (error) {
+            console.error("Error deleting exam:", error);
+        } finally {
+            setIsDeleting(false);
+        }
+    };
 
     if (error) {
-        return <div>Error: {JSON.stringify(error)}</div>
+        return <div>Error: {JSON.stringify(error)}</div>;
     }
 
     if (!response) {
-        return <div>Loading exams data...</div>
+        return <div>Loading exams data...</div>;
     }
 
     return (
@@ -28,6 +60,8 @@ function ExamView() {
                             <th className="px-4 py-2">Key Findings</th>
                             <th className="px-4 py-2">Brixia Scores</th>
                             <th className="px-4 py-2">Image URL</th>
+                            <th className="px-4 py-2">Update</th>
+                            <th className="px-4 py-2">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,7 +78,13 @@ function ExamView() {
                                     <td className="border border-gray-600 px-4 py-2">{exam.keyFindings}</td>
                                     <td className="border border-gray-600 px-4 py-2">{exam.brixiaScores}</td>
                                     <td className="border border-gray-600 px-4 py-2">
-                                        <a href={exam.imageURL} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">View Image</a>
+                                        <a href={exam.imageURL} target="_blank" rel="noopener noreferrer" className="text-white-400 hover:underline">View Image</a>
+                                    </td>
+                                    <td className="border border-gray-600 px-4 py-2">
+                                        <a href="#" onClick={() => handleUpdateExam(exam._id)} className="text-blue-400 hover:underline">Update</a>
+                                    </td>
+                                    <td className="border border-gray-600 px-4 py-2">
+                                        <a href="#" onClick={() => handleDeleteExam(exam._id)} className="text-red-400 hover:underline">Delete</a>
                                     </td>
                                 </tr>
                             ))}
@@ -52,7 +92,7 @@ function ExamView() {
                 </table>
             )}
         </div>
-    )
+    );
 }
 
-export default ExamView
+export default ExamView;
