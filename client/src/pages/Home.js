@@ -15,7 +15,7 @@ const Home = () => {
 
   return (
     <div className="admin-container bg-gray-800 text-white p-6 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-4">Exam View</h2>
+      <h2 className="text-2xl font-bold mb-4">Home View</h2>
       <div className="mb-4">
         Search:
         <input
