@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useApi } from "../hooks/use-api";
 import { BrowserRouter as Router, Routes, Rout, Link } from "react-router-dom";
+
+// import SinglePatientView from "components/SinglePatientView";
+// import SingleExamView from "components/SingleExamView";
+
 function ExamView() {
   const { response, error } = useApi({ path: "exams" });
 
@@ -97,10 +101,12 @@ function ExamView() {
               .map((exam, index) => (
                 <tr key={exam._id || index} className="bg-gray-800">
                   <td className="border border-gray-600 px-4 py-2">
-                    {exam.patientId}
+                    <Link to={`/patient/${exam.patientId}`}>
+                      {exam.patientId}
+                    </Link>
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
-                    {exam.examId}
+                    <Link to={`/exam/${exam.examId}`}>{exam.examId}</Link>
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
                     {exam.age}
