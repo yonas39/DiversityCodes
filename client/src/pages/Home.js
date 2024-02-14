@@ -31,11 +31,11 @@ const Home = () => {
           <thead>
             <tr className="bg-gray-700">
               <th className="px-4 py-2">Patient ID</th>
+              <th className="px-4 py-2">Exam ID</th>
               <th className="px-4 py-2">Age</th>
               <th className="px-4 py-2">Sex</th>
               <th className="px-4 py-2">Zip Code</th>
               <th className="px-4 py-2">BMI</th>
-              <th className="px-4 py-2">Exam ID</th>
               <th className="px-4 py-2">Key Findings</th>
               <th className="px-4 py-2">Brixia Scores</th>
               <th className="px-4 py-2">Image URL</th>
@@ -57,6 +57,9 @@ const Home = () => {
                     {exam.patientId}{" "}
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
+                    {exam.examId}
+                  </td>
+                  <td className="border border-gray-600 px-4 py-2">
                     {exam.age}
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
@@ -68,9 +71,7 @@ const Home = () => {
                   <td className="border border-gray-600 px-4 py-2">
                     {exam.bmi}
                   </td>
-                  <td className="border border-gray-600 px-4 py-2">
-                    {exam.examId}
-                  </td>
+
                   <td className="border border-gray-600 px-4 py-2">
                     {exam.keyFindings}
                   </td>
