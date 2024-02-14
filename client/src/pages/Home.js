@@ -1,98 +1,88 @@
-import React from "react";
+import React, { useState } from "react";
 import { useApi } from "../hooks/use-api";
-import { useState } from "react";
 
 const Home = () => {
-  const [search, setSearch] = useState("");
-  console.log(search);
   const { response, error } = useApi({ path: "exams" });
+  const [search, setSearch] = useState("");
 
   if (error) {
-    return <div>Error: {JSON.stringify(error)}</div>;
+    return <div className="text-red-500">Error: {JSON.stringify(error)}</div>;
   }
 
-  // Display a loading message if the response has not yet been received
   if (!response) {
-    return <div>Loading exams data...</div>; // This is where you add the loading indicator
+    return <div className="text-blue-500">Loading exams data...</div>;
   }
 
   return (
-    <div className="ExamView">
-      <p>
-        {/* We need to add the functionaltiy for this search bar */}
-        Search :
-        <input type="text" onChange={(e) => setSearch(e.target.value)}></input>
-      </p>
+    <div className="admin-container bg-gray-800 text-white p-6 rounded-lg shadow-lg">
+      <h2 className="text-2xl font-bold mb-4">Home View</h2>
+      <div className="mb-4">
+        Search:
+        <input
+          type="text"
+          className="border border-gray-600 rounded-md px-2 py-1 ml-2 text-black"
+          placeholder="Search Patient ID"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
       {response && response.exams && Array.isArray(response.exams) && (
-        <table>
+        <table className="border-collapse border border-gray-600 w-full">
           <thead>
-            <tr>
-              <th>Patient ID</th>
-              <th>Age</th>
-              <th>Sex</th>
-              <th>Zip Code</th>
-              <th>BMI</th>
-              <th>Exam ID</th>
-              <th>Key Findings</th>
-              <th>Brixia Scores</th>
-              <th>Image URL</th>
+            <tr className="bg-gray-700">
+              <th className="px-4 py-2">Patient ID</th>
+              <th className="px-4 py-2">Age</th>
+              <th className="px-4 py-2">Sex</th>
+              <th className="px-4 py-2">Zip Code</th>
+              <th className="px-4 py-2">BMI</th>
+              <th className="px-4 py-2">Exam ID</th>
+              <th className="px-4 py-2">Key Findings</th>
+              <th className="px-4 py-2">Brixia Scores</th>
+              <th className="px-4 py-2">Image URL</th>
             </tr>
           </thead>
           <tbody>
             {response.exams
-              .filter((exam) => {
-                return (
-                  exam != null &&
-                  (search.trim() === "" ||
-                    (exam &&
-                      exam.patientId &&
-                      exam.patientId
-                        .toLowerCase()
-                        .includes(search.trim().toLowerCase())))
-
-                  // ALL the search filters I added are optional we can use or get-rid of them if we want to ...
-                  // ||
-                  // exam.age
-                  //   .toString()
-                  //   .toLowerCase()
-                  //   .includes(search.trim().toLowerCase()) ||
-                  // exam.sex
-                  //   .toLowerCase()
-                  //   .includes(search.trim().toLowerCase()) ||
-                  // exam.zipCode
-                  //   .toString()
-                  //   .toLowerCase()
-                  //   .includes(search.trim().toLowerCase()) ||
-                  // exam.bmi
-                  //   .toString()
-                  //   .toLowerCase()
-                  //   .includes(search.trim().toLowerCase()) ||
-                  // exam.examId
-                  //   .toLowerCase()
-                  //   .includes(search.trim().toLowerCase()) ||
-                  // exam.keyFindings
-                  //   .toLowerCase()
-                  //   .includes(search.trim().toLowerCase()) ||
-                  // exam.brixiaScores
-                  //   .toLowerCase()
-                  //   .includes(search.trim().toLowerCase())
-                );
-              })
+              .filter((exam) =>
+                exam
+                  ? exam.patientId
+                      .toLowerCase()
+                      .includes(search.trim().toLowerCase())
+                  : false
+              )
               .map((exam, index) => (
-                <tr key={exam._id || index}>
-                  <td>{exam.patientId}</td>
-                  <td>{exam.age}</td>
-                  <td>{exam.sex}</td>
-                  <td>{exam.zipCode}</td>
-                  <td>{exam.bmi}</td>
-                  <td>{exam.examId}</td>
-                  <td>{exam.keyFindings}</td>
-                  <td>{exam.brixiaScores}</td>
-                  <td>
+                <tr key={exam._id || index} className="bg-gray-800">
+                  <td className="border border-gray-600 px-4 py-2">
+                    {" "}
+                    {exam.patientId}{" "}
+                  </td>
+                  <td className="border border-gray-600 px-4 py-2">
+                    {exam.age}
+                  </td>
+                  <td className="border border-gray-600 px-4 py-2">
+                    {exam.sex}
+                  </td>
+                  <td className="border border-gray-600 px-4 py-2">
+                    {exam.zipCode}
+                  </td>
+                  <td className="border border-gray-600 px-4 py-2">
+                    {exam.bmi}
+                  </td>
+                  <td className="border border-gray-600 px-4 py-2">
+                    {exam.examId}
+                  </td>
+                  <td className="border border-gray-600 px-4 py-2">
+                    {exam.keyFindings}
+                  </td>
+                  <td className="border border-gray-600 px-4 py-2">
+                    {exam.brixiaScores}
+                  </td>
+                  <td className="border border-gray-600 px-4 py-2">
                     <a
                       href={exam.imageURL}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="text-white hover:underline"
                     >
                       View Image
                     </a>
