@@ -117,3 +117,15 @@
 .button:hover {
   background-color: #2d3748;
 }
+
+.half-circle {
+  width: 500px; 
+  height: 500px; 
+  background-color: #4c88af; 
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-top-left-radius: 100%; 
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); 
+}
+
