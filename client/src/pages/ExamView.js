@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useApi } from "../hooks/use-api";
-import { BrowserRouter as Router, Routes, Rout, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 // import SinglePatientView from "components/SinglePatientView";
-// import SingleExamView from "components/SingleExamView";
+import SingleExamView from "components/SingleExamView";
 
 function ExamView() {
   const { response, error } = useApi({ path: "exams" });
@@ -41,6 +41,20 @@ function ExamView() {
       setIsDeleting(false);
     }
   };
+
+  const handleSingleExam = async (examId) => {
+    try {
+      const response = await fetch(`/api/exams/${examId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+    } catch (error) {
+      console.error("Error viewing exam:", error);
+    }
+  }; 
 
   if (error) {
     return <div>Error: {JSON.stringify(error)}</div>;
@@ -101,12 +115,14 @@ function ExamView() {
               .map((exam, index) => (
                 <tr key={exam._id || index} className="bg-gray-800">
                   <td className="border border-gray-600 px-4 py-2">
-                    <Link to={`/patient/${exam.patientId}`}>
+                    <Link to={`/patient/${exam.patientId}`} className="hover:underline">
                       {exam.patientId}
                     </Link>
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
-                    <Link to={`/exam/${exam.examId}`}>{exam.examId}</Link>
+                  <Link to={`/exam/${exam.examId}`} className="hover:underline">
+                    {exam.examId}
+                  </Link>
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
                     {exam.age}
@@ -120,7 +136,6 @@ function ExamView() {
                   <td className="border border-gray-600 px-4 py-2">
                     {exam.bmi}
                   </td>
-
                   <td className="border border-gray-600 px-4 py-2">
                     {exam.keyFindings}
                   </td>
@@ -160,8 +175,13 @@ function ExamView() {
           </tbody>
         </table>
       )}
+      
     </div>
   );
 }
+
+<Routes>
+  <Route path="/exam/:examId" element={<SingleExamView />} />
+</Routes>
 
 export default ExamView;
