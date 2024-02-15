@@ -23,7 +23,7 @@ function Home() {
         <section className="my-8">
           <h2 className="text-2xl font-semibold text-blue-300 mb-4">About Us</h2>
           <p className="text-lg font-semibold text-white-700">
-            Welcome to our MERM stack application.
+            Welcome to our MERN stack application.
             A application that allows doctors to 
             Create, Read, Update, and Delete (CRUD) 
             structured radiology reports as an assesment 
