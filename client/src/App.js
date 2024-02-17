@@ -10,6 +10,7 @@ import ExamView from "pages/ExamView";
 
 import SinglePatientView from "components/SinglePatientView";
 import SingleExamView from "components/SingleExamView";
+import Footer from "components/Footer"
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/exam/:examId" element={<SingleExamView />} />
         <Route path="/patient/:patientId" element={<SinglePatientView />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
