@@ -117,3 +117,15 @@
 .button:hover {
   background-color: #2d3748;
 }
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  background-color: white;
+  color: rgb(0, 0, 0);
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+}
