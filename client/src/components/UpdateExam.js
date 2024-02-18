@@ -27,10 +27,20 @@ const UpdateExam = ({ onUpdate }) => {
         });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        onUpdate(UpdateThisExam);
-    };
+    //NEED TO UPDATE ONCE BACK ENDS WORK SO IT COULD PROPERLY UPDATE THE EXAM INFO THAT WAS CHANGED
+    const handleSubmit = (event) => {
+        event.preventDefault();
+    
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(UpdateThisExam)
+        };
+    
+        fetch(`/api/exam/${examId}`, requestOptions)
+            .then(response => response.json())
+            .then(data => setUpdateThisExam(data));
+    }
 
     return (
         <div className="update-container">
@@ -104,8 +114,6 @@ const UpdateExam = ({ onUpdate }) => {
                         </div>
                     </div>
                 </form>
-
-
             </div>
         </div>
     );
