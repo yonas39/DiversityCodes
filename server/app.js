@@ -4,18 +4,59 @@ import path from "path"
 import cookieParser from "cookie-parser"
 import logger from "morgan"
 import cors from "cors"
+import dotenv from "dotenv"
+import { connectDB } from "./config/database.js"
+import { fileURLToPath } from "url"
+import { dirname } from "path"
+import mongoose from "mongoose"
+import ConnectMongo from "connect-mongo"
+import session from "express-session"
 
-import indexRouter from "./routes/index"
-import usersRouter from "./routes/users"
+dotenv.config({ path: "./.env" })
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+import indexRouter from "./routes/index.js"
+import usersRouter from "./routes/users.js"
+
+connectDB()
 
 const app = express()
+
+// Connect to the database
+
+const MongoStore = ConnectMongo.create({
+	mongoUrl: process.env.DB_STRING,
+})
+
+app.use(
+	session({
+		secret: "backendsessionsecret",
+		resave: false,
+		saveUninitialized: false,
+		store: MongoStore,
+	})
+)
+
+console.log(
+	`Connecting to MongoDB with connection string: ${process.env.DB_STRING}`
+)
+
+// middleware
+app.use((req, res, next) => {
+	console.log(req.path, req.method)
+	next()
+})
+
+// listen for requests
 
 app.use(logger("dev"))
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
-app.use(express.static(path.join(__dirname, "public")))
+app.use(express.static(path.join(__dirname, "client/build")))
 
 app.use("/", indexRouter)
 app.use("/users", usersRouter)
