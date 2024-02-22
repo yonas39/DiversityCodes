@@ -17,7 +17,6 @@ function Home() {
           <img src="/favicon.png" alt="hacksLogo" className="logo" />
         </div>
       </div>
-
       {/* Main content */}
       <main className="container mx-auto mt-8 px-4">
         <section className="my-8">
