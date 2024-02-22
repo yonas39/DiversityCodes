@@ -1,17 +1,17 @@
-import dotenv from 'dotenv';
-import express from 'express';
+const dotenv = require('dotenv');
+const express = require('express');
+const examRoutes = require('./routes/exams');
 
 dotenv.config();
 const app = express();
 
+app.use(express.json())
 app.use((req, res, next) => {
     console.log(req.path, req.method)
     next()
-})
-
-app.get('/', (req, res) => {
-    res.json({ message: "Welcome to DiversityCodes" });
 });
+
+app.use('/server/exams', examRoutes);
 
 app.listen(process.env.PORT, () => {
     console.log('listening on port', process.env.PORT);
