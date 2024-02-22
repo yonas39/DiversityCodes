@@ -115,6 +115,7 @@
   background-color: #2d3748;
 }
 
+/* Update Exam Page Styling */
 .update-container {
   background-color: #2d3748;
   color: white;
@@ -163,7 +164,7 @@
   width: 100%;
 }
 
-/* Update Page Buttons Styling */
+/* Update Exam Page Buttons Styling */
 .update-container button {
   background-color: gray;
   color: white;
