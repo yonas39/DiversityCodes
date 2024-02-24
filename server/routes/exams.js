@@ -1,12 +1,6 @@
-/* 
-import { getAllExams } from "../controllers/exam.js"
-import { getExamById } from "../controllerss/exam.js"
-
-router.get("/exams", getAllExams)
-router.get("/exams/patient/:examId", getExamById)
-*/
-
 const express = require('express');
+const Exam = require('../models/ExamSchema'); 
+const mongoose = require('mongoose')
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -17,9 +11,22 @@ router.get('/:id', (req, res) => {
     res.json({mssg: 'GET a single exam'})
 });
 
-router.post('/', (req, res) => {
-    res.json({mssg: 'POST a new exam'})
+router.post('/', async (req, res) => {
+    const {patientId, age, sex} = req.body;
+
+    try {
+        const exam = await Exam.create({
+            _id: new mongoose.Types.ObjectId(), 
+            patientId,
+            age,
+            sex
+        });
+        res.status(200).json(exam);
+    } catch(error) {
+        res.status(400).json({error: error.message});
+    }
 });
+
 
 router.delete('/:id', (req, res) => {
     res.json({mssg: 'DELETE a exam'})
