@@ -12,13 +12,14 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const { patientId, age, sex, bmi, examId, keyFindings, brixiaScores, imageURL } = req.body;
+    const { patientId, age, sex, zipCode, bmi, examId, keyFindings, brixiaScores, imageURL } = req.body;
     try {
         const exam = await Exam.create({
             _id: new mongoose.Types.ObjectId(),
             patientId,
             age,
             sex,
+            zipCode,
             bmi,
             examId,
             keyFindings,
