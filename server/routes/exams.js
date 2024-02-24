@@ -1,36 +1,21 @@
 const express = require('express');
 const Exam = require('../models/ExamSchema'); 
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const router = express.Router();
+const { 
+    createExam,
+    getAllExams,
+    getExamById,
+    getExamsByPatientId
+} = require('../controllers/exam');
 
-router.get('/', (req, res) => {
-    res.json({mssg: 'GET all exams'})
-});
+router.get('/', getAllExams)
 
-router.get('/:id', (req, res) => {
-    res.json({mssg: 'GET a single exam'})
-});
+router.get('/:id', getExamById)
 
-router.post('/', async (req, res) => {
-    const { patientId, age, sex, zipCode, bmi, examId, keyFindings, brixiaScores, imageURL } = req.body;
-    try {
-        const exam = await Exam.create({
-            _id: new mongoose.Types.ObjectId(),
-            patientId,
-            age,
-            sex,
-            zipCode,
-            bmi,
-            examId,
-            keyFindings,
-            brixiaScores,
-            imageURL
-        });
-        res.status(200).json(exam);
-    } catch (error) {
-        res.status(400).json({ error: error.message });
-    }
-});
+router.get('/:id', getExamsByPatientId)
+
+router.post('/', createExam);
 
 router.delete('/:id', (req, res) => {
     res.json({mssg: 'DELETE a exam'})
