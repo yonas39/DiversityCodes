@@ -11,6 +11,7 @@ import { dirname } from "path"
 import mongoose from "mongoose"
 import ConnectMongo from "connect-mongo"
 import session from "express-session"
+import examsRouter from "./routes/exams.js"
 
 dotenv.config({ path: "./.env" })
 
@@ -23,6 +24,7 @@ import usersRouter from "./routes/users.js"
 connectDB()
 
 const app = express()
+app.use(cors())
 
 // Connect to the database
 
@@ -52,7 +54,6 @@ app.use((req, res, next) => {
 // listen for requests
 
 app.use(logger("dev"))
-app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
@@ -60,6 +61,7 @@ app.use(express.static(path.join(__dirname, "client/build")))
 
 app.use("/", indexRouter)
 app.use("/users", usersRouter)
+app.use("/server/exams", examsRouter)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
