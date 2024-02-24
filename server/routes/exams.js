@@ -6,7 +6,9 @@ const {
     createExam,
     getAllExams,
     getExamById,
-    getExamsByPatientId
+    getExamsByPatientId,
+    deleteExam,
+    updateExam
 } = require('../controllers/exam');
 
 router.get('/', getAllExams)
@@ -17,12 +19,8 @@ router.get('/:id', getExamsByPatientId)
 
 router.post('/', createExam);
 
-router.delete('/:id', (req, res) => {
-    res.json({mssg: 'DELETE a exam'})
-});
+router.delete('/:id', deleteExam)
 
-router.patch('/:id', (req, res) => {
-    res.json({mssg: 'UPDATE a exam'})
-});
+router.patch('/:id', updateExam)
 
 module.exports = router;
