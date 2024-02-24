@@ -12,21 +12,24 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const {patientId, age, sex} = req.body;
-
+    const { patientId, age, sex, bmi, examId, keyFindings, brixiaScores, imageURL } = req.body;
     try {
         const exam = await Exam.create({
-            _id: new mongoose.Types.ObjectId(), 
+            _id: new mongoose.Types.ObjectId(),
             patientId,
             age,
-            sex
+            sex,
+            bmi,
+            examId,
+            keyFindings,
+            brixiaScores,
+            imageURL
         });
         res.status(200).json(exam);
-    } catch(error) {
-        res.status(400).json({error: error.message});
+    } catch (error) {
+        res.status(400).json({ error: error.message });
     }
 });
-
 
 router.delete('/:id', (req, res) => {
     res.json({mssg: 'DELETE a exam'})
