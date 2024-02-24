@@ -10,7 +10,8 @@
 
 import debug from "debug"
 import http from "http"
-import app from "../app.js"
+//import app from "../app.js"
+import {app} from "../server.js"
 
 /**
  * Get port from environment and store in Express.

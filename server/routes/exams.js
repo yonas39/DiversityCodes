@@ -11,11 +11,11 @@ const {
     updateExam
 } = require('../controllers/exam');
 
-router.get('/', getAllExams)
+//router.get('/', getAllExams)
 
 router.get('/:id', getExamById)
 
-router.get('/:id', getExamsByPatientId)
+router.get('/patient/:id', getExamsByPatientId)
 
 router.post('/', createExam);
 

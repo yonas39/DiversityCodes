@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 const Admin = ({ onAddExam }) => {
   const [newExam, setNewExam] = useState({
@@ -23,19 +24,26 @@ const Admin = ({ onAddExam }) => {
   };
 
   const handleAddExam = () => {
-    onAddExam(newExam);
-    // Clear form after adding exam
-    setNewExam({
-      patientId: "",
-      age: 0,
-      sex: "",
-      zipCode: 0,
-      bmi: 0,
-      examId: "",
-      keyFindings: "",
-      brixiaScores: "",
-      imageURL: "",
-    });
+    // Send a POST request to the server with the new exam data
+    axios.post('http://localhost:9000/test', newExam)
+      .then(response => {
+        console.log(response);
+        // Clear form after adding exam
+        setNewExam({
+          patientId: "",
+          age: 0,
+          sex: "",
+          zipCode: 0,
+          bmi: 0,
+          examId: "",
+          keyFindings: "",
+          brixiaScores: "",
+          imageURL: "",
+        });
+      })
+      .catch(error => {
+        console.error(error);
+      });
   };
 
   return (
