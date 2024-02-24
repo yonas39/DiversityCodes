@@ -19,4 +19,4 @@ const ExamSchema = new mongoose.Schema({
 	additionalNotes: String,
 })
 
-module.exports = mongoose.model("Exam", ExamSchema)
+module.exports = mongoose.model("MGHData", ExamSchema, "MGHData")
