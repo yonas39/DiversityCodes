@@ -11,7 +11,7 @@ const {
     updateExam
 } = require('../controllers/exam');
 
-//router.get('/', getAllExams)
+router.get('/', getAllExams)
 
 router.get('/:id', getExamById)
 

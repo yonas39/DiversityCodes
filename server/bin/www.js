@@ -7,17 +7,16 @@
 // var app = require('../app');
 // var debug = require('debug')('api:server');
 // var http = require('http');
-
-import debug from "debug"
-import http from "http"
-//import app from "../app.js"
-import {app} from "../server.js"
+const debug = require("debug");
+const http = require("http");
+const app = require("../server.js");
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || "9000")
+//var port = normalizePort(process.env.PORT || "9000")
+const port = 9001
 app.set("port", port)
 
 /**

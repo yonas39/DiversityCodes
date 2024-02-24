@@ -16,11 +16,7 @@ app.use((req, res, next) => {
     next()
 });
 
-//app.use('/server/exams', examRoutes);
-app.post('/test', (req, res) => {
-    console.log(req.body);
-    res.send('POST request to the homepage')
-});
+app.use('/server/exams', examRoutes);
 
 // connect to db
 mongoose.connect(process.env.DB_STRING)
