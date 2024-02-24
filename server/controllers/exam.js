@@ -60,12 +60,39 @@ const createExam = async (req, res) => {
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
-	
+}
+
+const deleteExam = async (req, res) => {
+	const { id } = req.params
+	if (!mongoose.Types.ObjectId.isValid(id)) {
+		return res.status(404).json({error: "No such exam"})
+	}
+	const exam = await Exam.findByIdAndDelete({_id: id})
+	if (!exam) {
+		return res.status(400).json({ message: "Exam not found" })
+	}
+	res.status(200).json(exam)
+}
+
+const updateExam = async (req, res) => {
+	const { id } = req.params
+	if (!mongoose.Types.ObjectId.isValid(id)) {
+		return res.status(404).json({error: "No such exam"})
+	}
+	const exam = await Exam.findByIdAndUpdate({_id: id}, {
+		...req.body
+	}) 
+	if (!exam) {
+		return res.status(400).json({ message: "Exam not found" })
+	}
+	res.status(200).json(exam)
 }
 
 module.exports = {
 	createExam,
 	getAllExams, 
 	getExamById,
-	getExamsByPatientId
+	getExamsByPatientId,
+	deleteExam,
+	updateExam
 }
