@@ -1,26 +1,29 @@
-const express = require('express');
-const Exam = require('../models/ExamSchema'); 
-const mongoose = require('mongoose');
-const router = express.Router();
-const { 
-    createExam,
-    getAllExams,
-    getExamById,
-    getExamsByPatientId,
-    deleteExam,
-    updateExam
-} = require('../controllers/exam');
+import express from "express"
+import {
+	createExam,
+	getAllExams,
+	getExamById,
+	getExamsByPatientId,
+	deleteExam,
+	updateExam,
+} from "../controllers/exam.js"
 
-router.get('/', getAllExams)
+const router = express.Router()
 
-router.get('/:id', getExamById)
+router.get("/", getAllExams)
+router.get("/:id", getExamsByPatientId)
+router.post("/", createExam)
+router.delete("/:id", deleteExam)
+router.patch("/:id", updateExam)
+router.get("/patient/:examId", getExamById)
 
-router.get('/patient/:id', getExamsByPatientId)
+export default router
+// Define a route for getting a specific exam by its ID
+// When this file is used with '/api/exams' in app.js, this route will be '/api/exams/patient/:examId'
 
-router.post('/', createExam);
-
-router.delete('/:id', deleteExam)
-
-router.patch('/:id', updateExam)
-
-module.exports = router;
+// createExam,
+// 	getAllExams,
+// 	getExamById,
+// 	getExamsByPatientId,
+// 	deleteExam,
+// 	updateExam,
