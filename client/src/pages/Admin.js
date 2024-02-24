@@ -25,7 +25,7 @@ const Admin = ({ onAddExam }) => {
 
   const handleAddExam = () => {
     // Send a POST request to the server with the new exam data
-    axios.post('http://localhost:9001/server/exams', newExam)
+    axios.post('http://localhost:9000/server/exams', newExam)
       .then(response => {
         console.log(response);
         // Clear form after adding exam

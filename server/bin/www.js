@@ -15,8 +15,7 @@ const app = require("../server.js");
  * Get port from environment and store in Express.
  */
 
-//var port = normalizePort(process.env.PORT || "9000")
-const port = 9001
+var port = normalizePort(process.env.PORT || "9000")
 app.set("port", port)
 
 /**
