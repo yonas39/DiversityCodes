@@ -26,6 +26,8 @@ connectDB()
 const app = express()
 app.use(cors())
 
+// added cors to help with CORS error
+
 // Connect to the database
 
 const MongoStore = ConnectMongo.create({
