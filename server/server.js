@@ -1,23 +1,32 @@
-require('dotenv').config()
+// const dotenv = require('dotenv');
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const cors = require('cors');
+// const examRoutes = require('./routes/exams');
 
-const express = require('express')
+// dotenv.config();
+// const app = express();
 
-// creates express app
-const app = express()
+// // Enable All CORS Requests
+// app.use(cors());
 
-// middleware
-app.use((req, res, next) => {
-    console.log(req.path, req.method)
-    next()
-})
+// app.use(express.json())
+// app.use((req, res, next) => {
+//     console.log(req.path, req.method)
+//     next()
+// });
 
-// react to requests (routes handler)
-app.get('/', (req, res) => {
-    res.json({mssg: 'Welcome to our MERN stack application!'})
-})
+// app.use('/server/exams', examRoutes);
 
-// listen for requests
-app.listen(process.env.PORT, () => {
-    console.log('listening on port', process.env.PORT)
-})
+// // connect to db
+// mongoose.connect(process.env.DB_STRING)
+//     .then(() =>{
+//         app.listen(process.env.PORT, () => {
+//             console.log('connected to db & listening on port', process.env.PORT);
+//         })
+//     })
+//     .catch((error) => {
+//         console.log(error)
+//     })
 
+// module.exports = app;

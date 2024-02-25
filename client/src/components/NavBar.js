@@ -1,21 +1,38 @@
-import React from "react"
+import React from "react";
+import { Link } from "react-router-dom";
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+} from "@/components/ui/navigation-menu";
 
-const Navbar = () => {
-	return (
-		<nav>
-			<ul>
-				<li>
-					<a href="#">Exams</a>
-				</li>
-				<li>
-					<a href="#">Admin</a>
-				</li>
-				<li>
-					<a href="#">Home</a>
-				</li>
-			</ul>
-		</nav>
-	)
-}
+const NavBar = () => {
+  return (
+    <nav className="navbar">
+      <div className="logo-container">
+        <img src="/favicon.png" alt="hacksLogo" className="logo" />
+      </div>
+      <NavigationMenu>
+        <NavigationMenuList className="space-x-4">
+          <NavigationMenuItem>
+            <Link to="/" className="nav-link">
+              Home
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link to="/exam" className="nav-link">
+              Exams
+            </Link>
+          </NavigationMenuItem>
+          {/* <NavigationMenuItem>
+            <Link to="/admin" className="nav-link">
+              Admin
+            </Link>
+          </NavigationMenuItem> */}
+        </NavigationMenuList>
+      </NavigationMenu>
+    </nav>
+  );
+};
 
-export default Navbar
+export default NavBar;
