@@ -117,13 +117,13 @@ function ExamView() {
           <thead>
             <tr className="bg-gray-700">
               <th className="px-4 py-2">Patient ID</th>
+              <th className="px-4 py-2">Exam ID</th>
               <th className="px-4 py-2">Age</th>
               <th className="px-4 py-2">Sex</th>
               <th className="px-4 py-2">Zip Code</th>
               <th className="px-4 py-2">BMI</th>
               <th className="px-4 py-2">Latest Weight</th>
               <th className="px-4 py-2">Image URL</th>
-              <th className="px-4 py-2">Exam ID</th>
               <th className="px-4 py-2">ICU Admit</th>
               <th className="px-4 py-2">Number of Admits</th>
               <th className="px-4 py-2">Mortality</th>
@@ -146,6 +146,11 @@ function ExamView() {
                     </Link>
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
+                  <Link to={`/exam/${exam.examId}`} className="hover:underline">
+                    {exam.examId}
+                  </Link>
+                  </td>
+                  <td className="border border-gray-600 px-4 py-2">
                     {exam.age}
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
@@ -164,11 +169,6 @@ function ExamView() {
                     {exam.ImageURL}
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
-                  <Link to={`/exam/${exam.examId}`} className="hover:underline">
-                    {exam.examId}
-                  </Link>
-                  </td>
-                  <td className="border border-gray-600 px-4 py-2">
                     {exam.ICUAdmit}
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
@@ -177,7 +177,6 @@ function ExamView() {
                   <td className="border border-gray-600 px-4 py-2">
                     {exam.mortality}
                   </td>
-
                   <td className="border border-gray-600 px-4 py-2">
                     <a
                       href="#"
