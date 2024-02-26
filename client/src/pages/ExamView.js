@@ -13,12 +13,12 @@ function ExamView() {
 
   //TODO
   const handleDeleteExam = (input) => {
-    console.log(input);
+    console.log(alert("DELETE BUTTON CLICKED"));
   };
 
   // TODO
   const handleUpdateExam = (input) => {
-    console.log();
+    console.log(alert("EXAM UPDATE CLICKED"));
   };
 
   useEffect(() => {
