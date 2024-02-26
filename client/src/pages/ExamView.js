@@ -128,7 +128,8 @@ function ExamView() {
               <th className="px-4 py-2">ICU Admit</th>
               <th className="px-4 py-2">Number of Admits</th>
               <th className="px-4 py-2">Mortality</th>
-              <th className="px-4 py-2">Actions</th>
+              <th className="px-4 py-2">Update</th>
+              <th className="px-4 py-2">Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -141,7 +142,9 @@ function ExamView() {
               .map((exam) => (
                 <tr key={exam._id} className="bg-gray-800">
                   <td className="border border-gray-600 px-4 py-2">
-                    {exam.patientId}
+                  <Link to={`/patient/${exam.patientId}`} className="hover:underline">
+                      {exam.patientId}
+                    </Link>
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
                     {exam.age}
@@ -162,7 +165,9 @@ function ExamView() {
                     {exam.ImageURL}
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
+                  <Link to={`/exam/${exam.examId}`} className="hover:underline">
                     {exam.examId}
+                  </Link>
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
                     {exam.ICUAdmit}
