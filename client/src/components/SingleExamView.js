@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const SingleExamView = () => {
-    const [exam, setExam] = useState(null);
+    const [exam, setExam] = useState([]);
     const { examId } = useParams(); 
 
     useEffect(() => {
