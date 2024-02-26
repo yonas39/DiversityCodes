@@ -128,7 +128,8 @@ function ExamView() {
               <th className="px-4 py-2">ICU Admit</th>
               <th className="px-4 py-2">Number of Admits</th>
               <th className="px-4 py-2">Mortality</th>
-              <th className="px-4 py-2">Actions</th>
+              <th className="px-4 py-2">Update</th>
+              <th className="px-4 py-2">Delete</th>
             </tr>
           </thead>
           <tbody>
