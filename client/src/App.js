@@ -6,7 +6,8 @@ import "./App.css";
 import Home from "./pages/Home";
 import Navbar from "./components/NavBar"; // Import Navbar
 import Admin from "./pages/Admin";
-import ExamView from "pages/ExamView";
+import AdminView from "pages/ExamView";
+import ExamTable from "pages/ExamTable";
 
 import SinglePatientView from "components/SinglePatientView";
 import SingleExamView from "components/SingleExamView";
@@ -23,7 +24,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="admin" element={<Admin />} />
-        <Route path="exam" element={<ExamView />} />
+       <Route path="examTable" element={<ExamTable />} />
+        <Route path="adminView" element={<AdminView />} />
 
         {/*    */}
         <Route path="/exam/:examId" element={<SingleExamView />} />
