@@ -7,7 +7,7 @@ const SingleExamView = () => {
     const { examId } = useParams(); 
 
     useEffect(() => {
-        const url = `${process.env.REACT_APP_API_BASE_URL}/server/exams/exam/${examId}`;
+        const url =  `${process.env.REACT_APP_API_BASE_URL}/server/exams/${examId}`;
         console.log("Fetching from URL:", url);
         fetch(url)
             .then((response) => response.json())
@@ -123,7 +123,7 @@ const SingleExamView = () => {
             </div>
           </div>
           <Link
-            to="/exam"
+            to="/examTable"
             className="button bg-blue-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
           >
             Back
