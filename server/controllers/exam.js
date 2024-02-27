@@ -115,6 +115,32 @@ export const deleteExam = async (req, res) => {
 }
 
 export const updateExam = async (req, res) => {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ error: "No such exam" });
+    }
+
+    try {
+        const updatedExam = await MGHData.findByIdAndUpdate(
+            id,
+            req.body,
+            { new: true } 
+        );
+
+        if (!updatedExam) {
+            return res.status(400).json({ message: "MGHData not found" });
+        }
+
+        res.status(200).json(updatedExam);
+    } catch (error) {
+        console.error("Error updating exam:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
+
+/* 
+export const updateExam = async (req, res) => {
 	const { id } = req.params
 	if (!mongoose.Types.ObjectId.isValid(id)) {
 		return res.status(404).json({ error: "No such exam" })
@@ -130,3 +156,4 @@ export const updateExam = async (req, res) => {
 	}
 	res.status(200).json(exam)
 }
+*/
