@@ -49,7 +49,7 @@ function ExamView() {
       try {
         // Send a GET request to fetch exams data from the API
         const response = await fetch(
-          `${process.env.REACT_APP_API_BASE_URL}/server/exams`
+          `${process.env.REACT_APP_API_BASE_URL}/server/exams/`
         );
         // Check if the response is successful
         if (!response.ok) {

@@ -13,11 +13,16 @@ const UpdateExam = ({ onUpdate }) => {
     const [UpdateThisExam, setUpdateThisExam] = useState({
         age: "patientId.age",
         sex: "patientId.sex",
-        bmi: "patientId.bmi",
         zipCode: "patientId.zipCode",
+        bmi: "patientId.bmi",
+        latestWeight: "patientId.latestWeight",
         imageURL: "examId.imageURL",
+        ICUAdmit: "examId.ICUAdmit",
+        numberOfAdmits: "examId.numberOfAdmits",
+        mortality: "examId.mortality",
         keyFindings: "examId.keyFindings",
         brixiaScores: "examId.brixiaScores"
+        
     });
 
     const handleUpdate = (field) => {
@@ -73,7 +78,6 @@ const UpdateExam = ({ onUpdate }) => {
                         value={UpdateThisExam.zipCode} 
                         onChange={e => handleUpdate({ zipCode: e.target.value })} />
                     </label>
-                    
                     <label>
                         BMI:
                         <input type="number"
@@ -81,7 +85,13 @@ const UpdateExam = ({ onUpdate }) => {
                         value={UpdateThisExam.bmi} 
                         onChange={e => handleUpdate({ bmi: e.target.value })} />
                     </label>
-                    
+                    <label>
+                        Latest Weight:
+                        <input type="number"
+                        name="latestWeight" 
+                        value={UpdateThisExam.latestWeight} 
+                        onChange={e => handleUpdate({ latestWeight: e.target.value })} />
+                    </label>                    
                     <label>
                         Key Findings:
                         <input type="text"
@@ -97,12 +107,34 @@ const UpdateExam = ({ onUpdate }) => {
                         onChange={e => handleUpdate({ brixiaScores: e.target.value })} />
                     </label>
                     <label>
+                        ICU Admit:
+                        <input type="number" 
+                        name="ICUAdmit"
+                        value={UpdateThisExam.ICUAdmit} 
+                        onChange={e => handleUpdate({ ICUAdmit: e.target.value })} />
+                    </label>
+                    <label>
+                        Number of Admits:
+                        <input type="number" 
+                        name="numberOfAdmits"
+                        value={UpdateThisExam.numberOfAdmits} 
+                        onChange={e => handleUpdate({ numberOfAdmits: e.target.value })} />
+                    </label>
+                    <label>
+                       Mortality:
+                        <input type="text" 
+                        name="mortality"
+                        value={UpdateThisExam.mortality} 
+                        onChange={e => handleUpdate({ mortality: e.target.value })} />
+                    </label>
+                    <label>
                         Image URL:
                         <input type="text" 
                         name="imageURL"
                         value={UpdateThisExam.imageURL} 
                         onChange={e => handleUpdate({ imageURL: e.target.value })} />
                     </label>
+
                     <div>
                         <div>
                             <button type="submit">
