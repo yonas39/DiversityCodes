@@ -136,6 +136,20 @@ const Admin = ({ onAddExam }) => {
               onChange={handleInputChange}
               className="border border-gray-300 rounded-md px-2 py-1 bg-gray-700 text-white w-full"
             />
+
+          </div>
+          {/* Latest Weight */}
+          <div className="mb-4">
+            <label htmlFor="latestWeight" className="block text-white-300 mb-1">
+            Latest Weight:
+            </label>
+            <input
+              type="number"
+              name="latestWeight"
+              value={newExam.latestWeight}
+              onChange={handleInputChange}
+              className="border border-gray-300 rounded-md px-2 py-1 bg-gray-700 text-white w-full"
+            />
           </div>
 
           {/* Exam ID */}
