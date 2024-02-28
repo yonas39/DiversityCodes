@@ -98,6 +98,13 @@ const SingleExamView = () => {
             </div>
             <div className="info-item">
               <label htmlFor="imageURL">Image URL:</label>
+              <input
+                type="text"
+                name="imageURL"
+                value={exam ? exam.imageURL : ""}
+                className="border border-gray-300 rounded-md px-2 py-1 bg-gray-700 text-white w-full"
+                readOnly
+              />
               {exam && exam.imageURL && (
                 <img
                   src={exam.imageURL}
