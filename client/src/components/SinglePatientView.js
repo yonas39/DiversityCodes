@@ -85,7 +85,7 @@
 //   );
 // }
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 
 const SinglePatientView = () => {
 	const [exams, setExams] = useState([])
@@ -107,19 +107,23 @@ const SinglePatientView = () => {
 	return (
 		<div className="admin-container bg-gray-800 text-white p-6 rounded-lg shadow-lg">
 			<h2 className="text-2xl font-bold mb-4">Exam Details</h2>
+			<h1 className="text-2xl font-bold mb-4">Patient ID: {patientId}</h1>
+			<h1 className="text-2xl font-bold mb-4">Number of Exams: {exams.length}</h1>
 			<div className="flex-grow">
 				<table className="border-collapse border border-gray-600 w-full">
 					<thead>
 						<tr className="bg-gray-700">
 							<th className="px-4 py-2">Patient ID</th>
+							<th className="px-4 py-2">Exam ID</th>
 							<th className="px-4 py-2">Age</th>
 							<th className="px-4 py-2">Sex</th>
 							<th className="px-4 py-2">Zip Code</th>
 							<th className="px-4 py-2">BMI</th>
 							<th className="px-4 py-2">Latest Weight</th>
-							<th className="px-4 py-2">Mortality</th>
-							<th className="px-4 py-2">Number of Admits</th>
 							<th className="px-4 py-2">Image URL</th>
+							<th className="px-4 py-2">ICU Admit</th>
+							<th className="px-4 py-2">Number of Admits</th>
+							<th className="px-4 py-2">Mortality</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -127,6 +131,9 @@ const SinglePatientView = () => {
 							<tr key={index} className="bg-gray-800">
 								<td className="border border-gray-600 px-4 py-2">
 									{exam.patientId}
+								</td>
+								<td className="border border-gray-600 px-4 py-2">
+									{exam.examId}
 								</td>
 								<td className="border border-gray-600 px-4 py-2">{exam.age}</td>
 								<td className="border border-gray-600 px-4 py-2">{exam.sex}</td>
@@ -138,25 +145,30 @@ const SinglePatientView = () => {
 									{exam.latestWeight}
 								</td>
 								<td className="border border-gray-600 px-4 py-2">
-									{exam.mortality}
+									{exam.ImageURL && <img src={exam.ImageURL} alt="Exam" style={{width: '50px', height: '50px'}} />}
+								</td>
+								<td className="border border-gray-600 px-4 py-2">
+									{exam.ICUAdmit}
 								</td>
 								<td className="border border-gray-600 px-4 py-2">
 									{exam.numberOfAdmits}
 								</td>
 								<td className="border border-gray-600 px-4 py-2">
-									{exam.ImageURL}
+									{exam.mortality}
 								</td>
 							</tr>
 						))}
 					</tbody>
 				</table>
 			</div>
-			{/* <Link
-				to="/exam"
-				className="button bg-blue-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
-			>
-				Back
-			</Link> */}
+			<div className="mt-4">
+                <Link
+                    to="/examTable"
+                    className="button bg-blue-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
+                    >
+                    Back
+                </Link>
+            </div>
 		</div>
 	)
 }
