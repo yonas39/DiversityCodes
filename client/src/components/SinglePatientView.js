@@ -109,14 +109,6 @@ const SinglePatientView = () => {
 			<h2 className="text-2xl font-bold mb-4">Exam Details</h2>
 			<h1 className="text-2xl font-bold mb-4">Patient ID: {patientId}</h1>
 			<h1 className="text-2xl font-bold mb-4">Number of Exams: {exams.length}</h1>
-			<div className="flex items-center mb-4">
-				<Link
-					to="/examTable"
-					className="button bg-blue-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
-				>
-					Back
-				</Link>
-				</div>
 			<div className="flex-grow">
 				<table className="border-collapse border border-gray-600 w-full">
 					<thead>
