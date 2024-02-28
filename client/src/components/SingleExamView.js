@@ -128,7 +128,7 @@ const SingleExamView = () => {
 					</div>
 				</div>
 				<Link
-					to="/exam"
+					to="/examTable"
 					className="button bg-blue-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
 				>
 					Back
