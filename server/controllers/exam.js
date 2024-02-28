@@ -114,21 +114,46 @@ export const deleteExam = async (req, res) => {
   res.status(200).json(exam)
 }
 
+/*
+// OLD PATCH CONTROLLER
 export const updateExam = async (req, res) => {
-  const { id } = req.params
+    const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "No such exam" })
-  }
-
-  try {
-    const exam = await MGHData.findByIdAndUpdate({ _id: id })
-
-    if (!exam) {
-      return res.status(400).json({ message: "MGHData not found" })
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ error: "No such exam" });
     }
 
-    res.status(200).json(exam)
+    try {
+        const exam = await MGHData.findByIdAndUpdate({ _id: id })
+
+        if (!exam) {
+            return res.status(400).json({ message: "MGHData not found" });
+        }
+
+        res.status(200).json(exam);
+    } catch (error) {
+        console.error("Error updating exam:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
+*/
+
+// NEW PUT CONTROLLER
+export const UpdateExam = async (req, res) => {
+  const { patientId, examId } = req.params
+
+  try {
+    const updatedExam = await MGHData.findOneAndUpdate(
+      { patientId, examId },
+      req.body,
+      { new: true },
+    )
+
+    if (!updatedExam) {
+      return res.status(404).json({ message: "Exam not found" })
+    }
+
+    res.status(200).json(updatedExam)
   } catch (error) {
     console.error("Error updating exam:", error)
     res.status(500).json({ message: "Internal server error" })
