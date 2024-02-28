@@ -145,7 +145,7 @@ const SinglePatientView = () => {
 									{exam.latestWeight}
 								</td>
 								<td className="border border-gray-600 px-4 py-2">
-									{exam.ImageURL && <img src={exam.ImageURL} alt="Exam" style={{width: '50px', height: '50px'}} />}
+									{exam.ImageURL}
 								</td>
 								<td className="border border-gray-600 px-4 py-2">
 									{exam.ICUAdmit}
