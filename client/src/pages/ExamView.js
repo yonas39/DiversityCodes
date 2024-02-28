@@ -11,28 +11,43 @@ function ExamView() {
 
 	const [search, setSearch] = useState("")
 
+	// use states for delete confirmation
+	const [showConfirmation, setShowConfirmation] = useState(false)
+	const [examToDelete, setExamToDelete] = useState(null)
+	const navigate = useNavigate()
+
 	/////////////////////////////////////////////////////
-	/////////DELETE BUTTON COMPLETED !!!!!!!!!! ////////
+	/////////DELETE CONFIRMATION COMPLETED !!!!!!!!!! ///
 	/////////////////////////////////////////////////////
 	const handleDeleteExam = async (examId) => {
+		setExamToDelete(examId)
+		setShowConfirmation(true)
+	}
+	const confirmDelete = async () => {
 		// console.log(alert("DELETE BUTTON CLICKED"));
-		console.log("Deleting Exam with ID: ", examId) // Log the message in the console
+		console.log("Deleting Exam with ID: ", examToDelete) // Log the message in the console
 		try {
 			const response = await fetch(
-				`${process.env.REACT_APP_API_BASE_URL}/server/exams/${examId}`,
+				`${process.env.REACT_APP_API_BASE_URL}/server/exams/${examToDelete}`,
 				{
 					method: "DELETE",
 				}
 			)
 			if (!response.ok) {
-				throw new Error(`Failed to Delete Exam with ID ${examId}`)
+				throw new Error(`Failed to Delete Exam with ID ${examToDelete}`)
 			}
 			// filter out the deleted exam from the state
-			setExams(exams.filter((exam) => exam._id !== examId))
+			setExams(exams.filter((exam) => exam._id !== examToDelete))
+			setShowConfirmation(false)
 		} catch (error) {
 			console.error("Error Deleting exam: ", error)
 			setError(error.message)
 		}
+	}
+
+	const cancelDelete = () => {
+		setShowConfirmation(false)
+		setExamToDelete(null)
 	}
 
 	/////////////////////////////////////////////////////
@@ -80,9 +95,6 @@ function ExamView() {
 		// Call the fetchData function when the component mounts (empty dependency array)
 		fetchData()
 	}, [])
-
-	// TODO
-	const navigate = useNavigate()
 
 	return (
 		<div className="admin-container bg-gray-800 text-white p-6 rounded-lg shadow-lg">
@@ -185,7 +197,7 @@ function ExamView() {
 									</td>
 									<td className="border border-gray-600 px-4 py-2">
 										<a
-											href="#"
+											href={`/update-exam/${exam.patientId}/${exam.examId}`}
 											onClick={() => handleUpdateExam(exam._id)}
 											className="text-blue-400 hover:underline"
 										>
@@ -213,6 +225,30 @@ function ExamView() {
 							))}
 					</tbody>
 				</table>
+			)}
+			{/* Show confirmation window */}
+			{showConfirmation && (
+				<div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+					<div className="bg-white p-6 rounded-lg shadow-lg">
+						<p className="mb-4 text-red-600 font-bold">
+							Are you sure you want to delete this exam?
+						</p>
+						<div className="flex justify-end">
+							<button
+								onClick={confirmDelete}
+								className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-2"
+							>
+								Delete
+							</button>
+							<button
+								onClick={cancelDelete}
+								className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
+							>
+								Cancel
+							</button>
+						</div>
+					</div>
+				</div>
 			)}
 		</div>
 	)

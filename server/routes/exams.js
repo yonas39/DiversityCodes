@@ -16,9 +16,6 @@ router.get("/patient/:patientId/exam/:examId", getExamById)
 
 router.post("/", createExam)
 router.delete("/:id", deleteExam)
-router.patch("/:id", updateExam)
-
+//router.patch("/:id", updateExam);
+router.put("/patient/:patientId/exam/:examId", updateExam)
 export default router
-
-// router.get("/exam/:id", getExamById)
-// router.get("/patient/:patientId", getExamsByPatientId)

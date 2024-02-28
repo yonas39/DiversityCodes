@@ -1,23 +1,28 @@
+
+// import React, { useEffect, useState } from "react"
+// import { useParams } from "react-router-dom"
+
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const SingleExamView = () => {
-    const [exam, setExam] = useState(null)
-	const { patientId, examId } = useParams()
 
-    useEffect(() => {
-		const url = `${process.env.REACT_APP_API_BASE_URL}/server/exams/patient/${patientId}/exam/${examId}`
-		console.log("Fetching from URL:", url)
+  const [exam, setExam] = useState(null);
+  const { patientId, examId } = useParams();
 
-		fetch(url)
-			.then((response) => response.json())
-			.then((data) => {
-				console.log("Data received from server:", data)
-				setExam(data)
-			})
-			.catch((error) => console.error("Error:", error))
-	}, [patientId, examId])
+  useEffect(() => {
+    const url = `${process.env.REACT_APP_API_BASE_URL}/server/exams/patient/${patientId}/exam/${examId}`;
+    console.log("Fetching from URL:", url);
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Data received from server:", data);
+        setExam(data);
+      })
+      .catch((error) => console.error("Error:", error));
+  }, [patientId, examId]);
 
     return (
       <div className="admin-container bg-gray-800 text-white p-6 rounded-lg shadow-lg" style={{  maxWidth: "1000px", margin: "0 auto" }}>

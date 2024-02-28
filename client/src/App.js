@@ -8,12 +8,9 @@ import Navbar from "./components/NavBar" // Import Navbar
 import Admin from "./pages/Admin"
 import AdminView from "pages/ExamView"
 import ExamTable from "pages/ExamTable"
-
 import SinglePatientView from "components/SinglePatientView"
 import SingleExamView from "components/SingleExamView"
-
-import UpdateExam from "components/UpdateExam"
-
+import UpdateExam from "./components/UpdateExam"
 import Footer from "components/Footer"
 
 function App() {
@@ -32,7 +29,10 @@ function App() {
 					element={<SingleExamView />}
 				/>
 				<Route path="/patient/:patientId" element={<SinglePatientView />} />
-				<Route path="/updateExam/:examId" element={<UpdateExam />} />
+				<Route
+					path="/update-exam/:patientId/:examId"
+					element={<UpdateExam />}
+				/>
 			</Routes>
 			<Footer />
 		</div>
