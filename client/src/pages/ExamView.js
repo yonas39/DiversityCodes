@@ -2,46 +2,61 @@
 /////////////////////////////UPDATED CODE FOR EXAM VIEW ////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
 
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
 
 function ExamView() {
-  const [exams, setExams] = useState([]);
-  const [error, setError] = useState(null);
+  const [exams, setExams] = useState([])
+  const [error, setError] = useState(null)
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("")
+
+  // use states for delete confirmation
+  const [showConfirmation, setShowConfirmation] = useState(false)
+  const [examToDelete, setExamToDelete] = useState(null)
+  const navigate = useNavigate()
 
   /////////////////////////////////////////////////////
-  /////////DELETE BUTTON COMPLETED !!!!!!!!!! ////////
+  /////////DELETE CONFIRMATION COMPLETED !!!!!!!!!! ///
   /////////////////////////////////////////////////////
   const handleDeleteExam = async (examId) => {
+    setExamToDelete(examId)
+    setShowConfirmation(true)
+  }
+  const confirmDelete = async () => {
     // console.log(alert("DELETE BUTTON CLICKED"));
-    console.log("Deleting Exam with ID: ", examId); // Log the message in the console
+    console.log("Deleting Exam with ID: ", examToDelete) // Log the message in the console
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_API_BASE_URL}/server/exams/${examId}`,
+        `${process.env.REACT_APP_API_BASE_URL}/server/exams/${examToDelete}`,
         {
           method: "DELETE",
         },
-      );
+      )
       if (!response.ok) {
-        throw new Error(`Failed to Delete Exam with ID ${examId}`);
+        throw new Error(`Failed to Delete Exam with ID ${examToDelete}`)
       }
       // filter out the deleted exam from the state
-      setExams(exams.filter((exam) => exam._id !== examId));
+      setExams(exams.filter((exam) => exam._id !== examToDelete))
+      setShowConfirmation(false)
     } catch (error) {
-      console.error("Error Deleting exam: ", error);
-      setError(error.message);
+      console.error("Error Deleting exam: ", error)
+      setError(error.message)
     }
-  };
+  }
+
+  const cancelDelete = () => {
+    setShowConfirmation(false)
+    setExamToDelete(null)
+  }
 
   /////////////////////////////////////////////////////
   /////////Update BUTTON In Progress !!!!!!!!!! ////////
   /////////////////////////////////////////////////////
   // TODO
   const handleUpdateExam = (input) => {
-    console.log(alert("EXAM UPDATE CLICKED"));
-  };
+    console.log(alert("EXAM UPDATE CLICKED"))
+  }
 
   useEffect(() => {
     // Function to fetch data from the server
@@ -50,39 +65,36 @@ function ExamView() {
         // Send a GET request to fetch exams data from the API
         const response = await fetch(
           `${process.env.REACT_APP_API_BASE_URL}/server/exams`,
-        );
+        )
         // Check if the response is successful
         if (!response.ok) {
           // If not successful, throw an error with the status code
           throw new Error(
             `Network response was not ok - Status: ${response.status}`,
-          );
+          )
         }
         // Parse the JSON response
-        const data = await response.json();
+        const data = await response.json()
         // Log the fetched data
-        console.log("Fetched data:", data);
+        console.log("Fetched data:", data)
         // Check if the fetched data is an array
         if (Array.isArray(data)) {
           // If it's an array, update the state with the fetched data
-          setExams(data);
+          setExams(data)
         } else {
           // If the data format is unexpected, set an error message
-          setError("Unexpected data format from the API");
+          setError("Unexpected data format from the API")
         }
       } catch (error) {
         // If an error occurs during fetching, set the error state and log the error
-        setError(error);
-        console.error("Error fetching exams:", error);
+        setError(error)
+        console.error("Error fetching exams:", error)
       }
-    };
+    }
 
     // Call the fetchData function when the component mounts (empty dependency array)
-    fetchData();
-  }, []);
-
-  // TODO
-  const navigate = useNavigate();
+    fetchData()
+  }, [])
 
   return (
     <div className="admin-container bg-gray-800 text-white p-6 rounded-lg shadow-lg">
@@ -214,8 +226,32 @@ function ExamView() {
           </tbody>
         </table>
       )}
+      {/* Show confirmation window */}
+      {showConfirmation && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <p className="mb-4 text-red-600 font-bold">
+              Are you sure you want to delete this exam?
+            </p>
+            <div className="flex justify-end">
+              <button
+                onClick={confirmDelete}
+                className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-2"
+              >
+                Delete
+              </button>
+              <button
+                onClick={cancelDelete}
+                className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
-  );
+  )
 }
 
-export default ExamView;
+export default ExamView
