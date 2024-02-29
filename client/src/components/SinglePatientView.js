@@ -84,29 +84,29 @@
 //     </div>
 //   );
 // }
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react"
+import { useParams, Link } from "react-router-dom"
 
 const SinglePatientView = () => {
   // URL
   const AWS_URL =
-    "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/";
+    "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/"
 
-  const [exams, setExams] = useState([]);
-  const { patientId } = useParams(); // Extract patientId from the route parameters
+  const [exams, setExams] = useState([])
+  const { patientId } = useParams() // Extract patientId from the route parameters
 
   useEffect(() => {
-    const url = `${process.env.REACT_APP_API_BASE_URL}/server/exams/patient/${patientId}`;
-    console.log("Fetching from URL:", url);
+    const url = `${process.env.REACT_APP_API_BASE_URL}/server/exams/patient/${patientId}`
+    console.log("Fetching from URL:", url)
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        console.log("Data received from server:", data);
-        setExams(data);
+        console.log("Data received from server:", data)
+        setExams(data)
       })
-      .catch((error) => console.error("Error:", error));
-  }, [patientId]);
+      .catch((error) => console.error("Error:", error))
+  }, [patientId])
 
   return (
     <div className="admin-container bg-gray-800 text-white p-6 rounded-lg shadow-lg">
@@ -165,6 +165,15 @@ const SinglePatientView = () => {
                       />
                     </div>
                   )}
+                  <td className="">
+                    {exam.imageURL && (
+                      <img
+                        src={exam.imageURL}
+                        alt="Exam"
+                        style={{ maxWidth: "100px" }}
+                      />
+                    )}
+                  </td>
                 </td>
                 <td className="border border-gray-600 px-4 py-2">
                   {exam.ICUAdmit}
@@ -189,7 +198,7 @@ const SinglePatientView = () => {
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SinglePatientView;
+export default SinglePatientView
