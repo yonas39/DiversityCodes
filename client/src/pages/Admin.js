@@ -54,12 +54,6 @@ const Admin = ({ onAddExam }) => {
     <div className="admin-container bg-gray-800 text-white p-6 rounded-lg shadow-lg" style={{ height: "100vh", maxWidth: "800px", margin: "0 auto" }}>
       <h2 className="text-2xl font-bold mb-4">Admin Panel</h2>
       <div className="space-y-4">
-        <div className="flex items-center mb-4">
-          <Link to="/adminView" className="create-new-exam button bg-blue-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
-            Back
-          </Link>
-        </div>
-
         <form>
           <div className="grid grid-cols-2 gap-4">
             <div className="mb-4">
@@ -93,16 +87,6 @@ const Admin = ({ onAddExam }) => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="keyFindings" className="block text-white-300 mb-1">Key Findings:</label>
-              <input type="text" name="keyFindings" value={newExam.keyFindings} onChange={handleInputChange} className="border border-gray-300 rounded-md px-2 py-1 bg-gray-700 text-white w-full" />
-            </div>
-
-            <div className="mb-4">
-              <label htmlFor="brixiaScores" className="block text-white-300 mb-1">Brixia Scores:</label>
-              <input type="text" name="brixiaScores" value={newExam.brixiaScores} onChange={handleInputChange} className="border border-gray-300 rounded-md px-2 py-1 bg-gray-700 text-white w-full" />
-            </div>
-
-            <div className="mb-4">
               <label htmlFor="imageURL" className="block text-white-300 mb-1">Image URL:</label>
               <input type="text" name="imageURL" value={newExam.imageURL} onChange={handleInputChange} className="border border-gray-300 rounded-md px-2 py-1 bg-gray-700 text-white w-full" />
             </div>
@@ -121,17 +105,24 @@ const Admin = ({ onAddExam }) => {
               <label htmlFor="mortality" className="block text-white-300 mb-1">Mortality:</label>
               <input type="text" name="mortality" value={newExam.mortality} onChange={handleInputChange} className="border border-gray-300 rounded-md px-2 py-1 bg-gray-700 text-white w-full" />
             </div>
-
           </div>
+        </form>
+        <div>
           {/* Add Exam Button */}
           <button
             type="button"
             onClick={handleAddExam}
-            className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
+            className="button bg-blue-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mt-4"
           >
             Add Exam
           </button>
-        </form>
+          <Link 
+            to="/adminView" 
+            className="button bg-blue-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mt-4 ml-4"
+          >
+            Back
+          </Link>
+        </div>
       </div>
     </div>
   );
