@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 const CreateNewExam = ({ onAddExam }) => {
@@ -13,10 +13,12 @@ const CreateNewExam = ({ onAddExam }) => {
     keyFindings: "",
     brixiaScores: "",
     imageURL: "",
-    ICU_Admit: "", 
-    numberOfAdmits: 0, 
-    mortality: "" 
+    ICU_Admit: "",
+    numberOfAdmits: 0,
+    mortality: ""
   });
+  
+  let navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -44,6 +46,8 @@ const CreateNewExam = ({ onAddExam }) => {
           numberOfAdmits: 0,
           mortality: ""
         });
+        alert('Exam has been created');
+        navigate('/examTable');
       })
       .catch(error => {
         console.error(error);
@@ -116,8 +120,8 @@ const CreateNewExam = ({ onAddExam }) => {
           >
             Add Exam
           </button>
-          <Link 
-            to="/adminView" 
+          <Link
+            to="/adminView"
             className="button bg-blue-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mt-4 ml-4"
           >
             Back
