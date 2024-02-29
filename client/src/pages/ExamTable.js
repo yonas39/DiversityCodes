@@ -12,11 +12,11 @@ function ExamView() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_API_BASE_URL}/server/exams`,
+          `${process.env.REACT_APP_API_BASE_URL}/server/exams`
         )
         if (!response.ok) {
           throw new Error(
-            `Network response was not ok - Status: ${response.status}`,
+            `Network response was not ok - Status: ${response.status}`
           )
         }
         const data = await response.json()
@@ -77,7 +77,7 @@ function ExamView() {
               .filter((exam) =>
                 exam.patientId
                   .toLowerCase()
-                  .includes(search.trim().toLowerCase()),
+                  .includes(search.trim().toLowerCase())
               )
               .map((exam) => (
                 <tr key={exam._id} className="bg-gray-800">
