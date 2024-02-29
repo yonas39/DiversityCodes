@@ -115,8 +115,8 @@ const SingleExamView = () => {
                 readOnly
               />
               {exam && exam.ImageURL && (
-                <div className="mt-4">
-                  <img src={exam.ImageURL} alt="Exam" />
+                <div className="imageDisplay">
+                  <img src={exam.ImageURL} alt="Exam" style={{ maxWidth: '100%' }} />
                 </div>
               )}
             </div>
