@@ -161,7 +161,7 @@ const SinglePatientView = () => {
                             : exam.ImageURL
                         }
                         alt="patient x-ray image"
-                        style={{ maxWidth: "10%" }}
+                        style={{ maxWidth: "100px" }}
                       />
                     </div>
                   )}
