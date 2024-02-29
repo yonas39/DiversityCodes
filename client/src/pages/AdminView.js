@@ -123,263 +123,69 @@ function ExamView() {
 
 			{exams.length === 0 && !error && <div>Loading exams data...</div>}
 
-// <<<<<<< JoseMainPartTwo
-// 			{exams.length > 0 && (
-// 				<table className="border-collapse border border-gray-600 w-full">
-// 					<thead>
-// 						<tr className="bg-gray-700">
-// 							<th className="px-4 py-2">Patient ID</th>
-// 							<th className="px-4 py-2">Exam ID</th>
-// 							<th className="px-4 py-2">Age</th>
-// 							<th className="px-4 py-2">Sex</th>
-// 							<th className="px-4 py-2">Zip Code</th>
-// 							<th className="px-4 py-2">BMI</th>
-// 							<th className="px-4 py-2">Latest Weight</th>
-// 							<th className="px-4 py-2">Image URL</th>
-// 							<th className="px-4 py-2">ICU Admit</th>
-// 							<th className="px-4 py-2">Number of Admits</th>
-// 							<th className="px-4 py-2">Mortality</th>
-// 							<th className="px-4 py-2">Update</th>
-// 							<th className="px-4 py-2">Delete</th>
-// 						</tr>
-// 					</thead>
-// 					<tbody>
-// 						{exams
-// 							.filter((exam) =>
-// 								exam.patientId
-// 									.toLowerCase()
-// 									.includes(search.trim().toLowerCase())
-// 							)
-// 							.map((exam) => (
-// 								<tr key={exam._id} className="bg-gray-800">
-// 									<td className="border border-gray-600 px-4 py-2">
-// 										<Link
-// 											to={`/patient/${exam.patientId}`}
-// 											className="hover:underline"
-// 										>
-// 											{exam.patientId}
-// 										</Link>
-// 									</td>
-// 									<td className="border border-gray-600 px-4 py-2">
-// 										<Link
-// 											to={`/patient/${exam.patientId}/exam/${exam.examId}`}
-// 											className="hover:underline"
-// 										>
-// 											{exam.examId}
-// 										</Link>
-// 									</td>
-// 									<td className="border border-gray-600 px-4 py-2">
-// 										{exam.age}
-// 									</td>
-// 									<td className="border border-gray-600 px-4 py-2">
-// 										{exam.sex}
-// 									</td>
-// 									<td className="border border-gray-600 px-4 py-2">
-// 										{exam.zipCode}
-// 									</td>
-// 									<td className="border border-gray-600 px-4 py-2">
-// 										{exam.bmi}
-// 									</td>
-// 									<td className="border border-gray-600 px-4 py-2">
-// 										{exam.latestWeight}
-// 									</td>
-// 									<td className="border border-gray-600 px-4 py-2">
-// 										{/* {exam.ImageURL} */}
-// 										{exam && exam.ImageURL && (
-// 											<div className="imageDisplay">
-// 												<img
-// 													src={
-// 														exam.ImageURL.startsWith("COVID-19")
-// 															? AWS_URL + exam.ImageURL
-// 															: exam.ImageURL
-// 													}
-// 													alt="patient x-ray image"
-// 													style={{ maxWidth: "100px" }}
-// 													onClick={() => {
-// 														setSelectedImage(
-// 															exam.ImageURL.startsWith("COVID-19")
-// 																? AWS_URL + exam.ImageURL
-// 																: exam.ImageURL
-// 														)
-// 														setModalIsOpen(true)
-// 													}}
-// 												/>
-// 												<Modal
-// 													isOpen={modalIsOpen}
-// 													onRequestClose={() => setModalIsOpen(false)}
-// 													style={{
-// 														content: {
-// 															display: "flex",
-// 															flexDirection: "column",
-// 															justifyContent: "center",
-// 															alignItems: "center",
-// 														},
-// 													}}
-// 												>
-// 													<p>Click on the image to close</p>
-// 													<img
-// 														src={selectedImage}
-// 														alt="Full size"
-// 														style={{ maxWidth: "100%" }}
-// 														onClick={() => setModalIsOpen(false)}
-// 													/>
-// 												</Modal>
-// 											</div>
-// 										)}
-// 										<td className="">
-// 											{exam.imageURL && (
-// 												<img
-// 													src={exam.imageURL}
-// 													alt="Exam"
-// 													style={{ maxWidth: "100px" }}
-// 													onClick={() => {
-// 														setSelectedImage(exam.imageURL)
-// 														setModalIsOpen(true)
-// 													}}
-// 												/>
-// 											)}
-// 											<Modal
-// 												isOpen={modalIsOpen}
-// 												onRequestClose={() => setModalIsOpen(false)}
-// 												style={{
-// 													content: {
-// 														display: "flex",
-// 														flexDirection: "column",
-// 														justifyContent: "center",
-// 														alignItems: "center",
-// 													},
-// 												}}
-// 											>
-// 												<p>Click on the image to close</p>
-// 												<img
-// 													src={selectedImage}
-// 													alt="Full size"
-// 													style={{ maxWidth: "100%" }}
-// 													onClick={() => setModalIsOpen(false)}
-// 												/>
-// 											</Modal>
-// 										</td>
-// 									</td>
-// 									<td className="border border-gray-600 px-4 py-2">
-// 										{exam.ICUAdmit}
-// 									</td>
-// 									<td className="border border-gray-600 px-4 py-2">
-// 										{exam.numberOfAdmits}
-// 									</td>
-// 									<td className="border border-gray-600 px-4 py-2">
-// 										{exam.mortality}
-// 									</td>
-// 									<td className="border border-gray-600 px-4 py-2">
-// 										<a
-// 											href={`/update-exam/${exam.patientId}/${exam.examId}`}
-// 											className="text-blue-400 hover:underline"
-// 										>
-// 											Update
-// 										</a>
-// 									</td>
-// 									<td className="border border-gray-600 px-4 py-2">
-// 										<a
-// 											href="#"
-// 											onClick={() => handleDeleteExam(exam._id)}
-// 											className="text-red-400 hover:underline"
-// 										>
-// 											Delete
-// 										</a>
-// 									</td>
-// 								</tr>
-// 							))}
-// 					</tbody>
-// 				</table>
-// 			)}
-// 			{/* Show confirmation window */}
-// 			{showConfirmation && (
-// 				<div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-// 					<div className="bg-white p-6 rounded-lg shadow-lg">
-// 						<p className="mb-4 text-red-600 font-bold">
-// 							Are you sure you want to delete this exam?
-// 						</p>
-// 						<div className="flex justify-end">
-// 							<button
-// 								onClick={confirmDelete}
-// 								className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-2"
-// 							>
-// 								Delete
-// 							</button>
-// 							<button
-// 								onClick={cancelDelete}
-// 								className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
-// 							>
-// 								Cancel
-// 							</button>
-// 						</div>
-// 					</div>
-// 				</div>
-// 			)}
-// 		</div>
-// 	)
-// =======
-      {exams.length > 0 && (
-        <table className="border-collapse border border-gray-600 w-full">
-          <thead>
-            <tr className="bg-gray-700">
-              <th className="px-4 py-2">Patient ID</th>
-              <th className="px-4 py-2">Exam ID</th>
-              <th className="px-4 py-2">Age</th>
-              <th className="px-4 py-2">Sex</th>
-              <th className="px-4 py-2">Zip Code</th>
-              <th className="px-4 py-2">BMI</th>
-              <th className="px-4 py-2">Latest Weight</th>
-              <th className="px-4 py-2">Image URL</th>
-              <th className="px-4 py-2">ICU Admit</th>
-              <th className="px-4 py-2">Number of Admits</th>
-              <th className="px-4 py-2">Mortality</th>
-              <th className="px-4 py-2">Update</th>
-              <th className="px-4 py-2">Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {exams
-              .filter((exam) =>
-                exam.patientId
-                  .toLowerCase()
-                  .includes(search.trim().toLowerCase())
-              )
-              .map((exam) => (
-                <tr key={exam._id} className="bg-gray-800">
-                  <td className="border border-gray-600 px-4 py-2">
-                    <Link
-                      to={`/patient/${exam.patientId}`}
-                      className="hover:underline"
-                    >
-                      {exam.patientId}
-                    </Link>
-                  </td>
-                  <td className="border border-gray-600 px-4 py-2">
-                    <Link
-                      to={`/patient/${exam.patientId}/exam/${exam.examId}`}
-                      className="hover:underline"
-                    >
-                      {exam.examId}
-                    </Link>
-                  </td>
-                  <td className="border border-gray-600 px-4 py-2">
-                    {exam.age}
-                  </td>
-                  <td className="border border-gray-600 px-4 py-2">
-                    {exam.sex}
-                  </td>
-                  <td className="border border-gray-600 px-4 py-2">
-                    {exam.zipCode}
-                  </td>
-                  <td className="border border-gray-600 px-4 py-2">
-                    {exam.bmi}
-                  </td>
-                  <td className="border border-gray-600 px-4 py-2">
-                    {exam.latestWeight}
-                  </td>
-                  <td className="border border-gray-600 px-4 py-2">
-                    {/* {exam.ImageURL} */}
-                    {exam && exam.ImageURL && (
+			{/* whatever you added broke the code */}
+			{exams.length > 0 && (
+				<table className="border-collapse border border-gray-600 w-full">
+					<thead>
+						<tr className="bg-gray-700">
+							<th className="px-4 py-2">Patient ID</th>
+							<th className="px-4 py-2">Exam ID</th>
+							<th className="px-4 py-2">Age</th>
+							<th className="px-4 py-2">Sex</th>
+							<th className="px-4 py-2">Zip Code</th>
+							<th className="px-4 py-2">BMI</th>
+							<th className="px-4 py-2">Latest Weight</th>
+							<th className="px-4 py-2">Image URL</th>
+							<th className="px-4 py-2">ICU Admit</th>
+							<th className="px-4 py-2">Number of Admits</th>
+							<th className="px-4 py-2">Mortality</th>
+							<th className="px-4 py-2">Update</th>
+							<th className="px-4 py-2">Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						{exams
+							.filter((exam) =>
+								exam.patientId
+									.toLowerCase()
+									.includes(search.trim().toLowerCase())
+							)
+							.map((exam) => (
+								<tr key={exam._id} className="bg-gray-800">
+									<td className="border border-gray-600 px-4 py-2">
+										<Link
+											to={`/patient/${exam.patientId}`}
+											className="hover:underline"
+										>
+											{exam.patientId}
+										</Link>
+									</td>
+									<td className="border border-gray-600 px-4 py-2">
+										<Link
+											to={`/patient/${exam.patientId}/exam/${exam.examId}`}
+											className="hover:underline"
+										>
+											{exam.examId}
+										</Link>
+									</td>
+									<td className="border border-gray-600 px-4 py-2">
+										{exam.age}
+									</td>
+									<td className="border border-gray-600 px-4 py-2">
+										{exam.sex}
+									</td>
+									<td className="border border-gray-600 px-4 py-2">
+										{exam.zipCode}
+									</td>
+									<td className="border border-gray-600 px-4 py-2">
+										{exam.bmi}
+									</td>
+									<td className="border border-gray-600 px-4 py-2">
+										{exam.latestWeight}
+									</td>
+									<td className="border border-gray-600 px-4 py-2">
+										{/* {exam.ImageURL} */}
+										{exam && exam.ImageURL && (
 											<div className="imageDisplay">
 												<img
 													src={
@@ -453,64 +259,64 @@ function ExamView() {
 												/>
 											</Modal>
 										</td>
-
-                  <td className="border border-gray-600 px-4 py-2">
-                    {exam.ICUAdmit}
-                  </td>
-                  <td className="border border-gray-600 px-4 py-2">
-                    {exam.numberOfAdmits}
-                  </td>
-                  <td className="border border-gray-600 px-4 py-2">
-                    {exam.mortality}
-                  </td>
-                  <td className="border border-gray-600 px-4 py-2">
-                    <a
-                      href={`/update-exam/${exam.patientId}/${exam.examId}`}
-                      className="text-blue-400 hover:underline"
-                    >
-                      Update
-                    </a>
-                  </td>
-                  <td className="border border-gray-600 px-4 py-2">
-                    <a
-                      href="#"
-                      onClick={() => handleDeleteExam(exam._id)}
-                      className="text-red-400 hover:underline"
-                    >
-                      Delete
-                    </a>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-      )}
-      {/* Show confirmation window */}
-      {showConfirmation && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <p className="mb-4 text-red-600 font-bold">
-              Are you sure you want to delete this exam?
-            </p>
-            <div className="flex justify-end">
-              <button
-                onClick={confirmDelete}
-                className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-2"
-              >
-                Delete
-              </button>
-              <button
-                onClick={cancelDelete}
-                className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  )
+									</td>
+									<td className="border border-gray-600 px-4 py-2">
+										{exam.ICUAdmit}
+									</td>
+									<td className="border border-gray-600 px-4 py-2">
+										{exam.numberOfAdmits}
+									</td>
+									<td className="border border-gray-600 px-4 py-2">
+										{exam.mortality}
+									</td>
+									<td className="border border-gray-600 px-4 py-2">
+										<a
+											href={`/update-exam/${exam.patientId}/${exam.examId}`}
+											className="text-blue-400 hover:underline"
+										>
+											Update
+										</a>
+									</td>
+									<td className="border border-gray-600 px-4 py-2">
+										<a
+											href="#"
+											onClick={() => handleDeleteExam(exam._id)}
+											className="text-red-400 hover:underline"
+										>
+											Delete
+										</a>
+									</td>
+								</tr>
+							))}
+					</tbody>
+				</table>
+			)}
+			{/* Show confirmation window */}
+			{showConfirmation && (
+				<div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+					<div className="bg-white p-6 rounded-lg shadow-lg">
+						<p className="mb-4 text-red-600 font-bold">
+							Are you sure you want to delete this exam?
+						</p>
+						<div className="flex justify-end">
+							<button
+								onClick={confirmDelete}
+								className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-2"
+							>
+								Delete
+							</button>
+							<button
+								onClick={cancelDelete}
+								className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
+							>
+								Cancel
+							</button>
+						</div>
+					</div>
+				</div>
+			)}
+		</div>
+	)
 }
 
 export default ExamView
