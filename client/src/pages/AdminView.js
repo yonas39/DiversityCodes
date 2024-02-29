@@ -123,6 +123,7 @@ function ExamView() {
 
 			{exams.length === 0 && !error && <div>Loading exams data...</div>}
 
+			{/* whatever you added broke the code */}
 			{exams.length > 0 && (
 				<table className="border-collapse border border-gray-600 w-full">
 					<thead>
