@@ -124,6 +124,16 @@ const UpdateExam = () => {
                 />
               </div>
               <div className="info-item">
+                <label htmlFor="zipCode">Zip Code:</label>
+                <input
+                  type="text"
+                  name="zipCode"
+                  value={exam ? exam.zipCode : ""}
+                  className="border border-gray-300 rounded-md px-2 py-1 bg-gray-700 text-white w-full"
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="info-item">
                 <label htmlFor="bmi">BMI:</label>
                 <input
                   type="text"
@@ -134,11 +144,11 @@ const UpdateExam = () => {
                 />
               </div>
               <div className="info-item">
-                <label htmlFor="zipCode">Zip Code:</label>
+                <label htmlFor="latestWeight">Latest Weight:</label>
                 <input
                   type="text"
-                  name="zipCode"
-                  value={exam ? exam.zipCode : ""}
+                  name="latestWeight"
+                  value={exam ? exam.latestWeight : ""}
                   className="border border-gray-300 rounded-md px-2 py-1 bg-gray-700 text-white w-full"
                   onChange={handleInputChange}
                 />
@@ -176,20 +186,31 @@ const UpdateExam = () => {
                 )}
               </div>
               <div className="info-item">
-                <label htmlFor="keyFindings">Key Findings:</label>
-                <textarea
-                  name="keyFindings"
-                  value={exam ? exam.keyFindings : ""}
-                  className="border border-gray-300 rounded-md px-2 py-1 bg-gray-700 text-white w-full"
-                  onChange={handleInputChange}
-                ></textarea>
-              </div>
-              <div className="info-item">
-                <label htmlFor="brixiaScores">Brixia Score:</label>
+                <label htmlFor="ICUAdmit">ICU Admit:</label>
                 <input
                   type="text"
-                  name="brixiaScores"
-                  value={exam ? exam.brixiaScores : ""}
+                  name="ICUAdmit"
+                  value={exam ? exam.ICUAdmit : ""}
+                  className="border border-gray-300 rounded-md px-2 py-1 bg-gray-700 text-white w-full"
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="info-item">
+                <label htmlFor="numberOfAdmits">Number of Admits:</label>
+                <input
+                  type="text"
+                  name="numberOfAdmits"
+                  value={exam ? exam.numberOfAdmits : ""}
+                  className="border border-gray-300 rounded-md px-2 py-1 bg-gray-700 text-white w-full"
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="info-item">
+                <label htmlFor="mortality">Mortality:</label>
+                <input
+                  type="text"
+                  name="mortality"
+                  value={exam ? exam.mortality : ""}
                   className="border border-gray-300 rounded-md px-2 py-1 bg-gray-700 text-white w-full"
                   onChange={handleInputChange}
                 />
