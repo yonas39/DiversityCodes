@@ -194,16 +194,17 @@ function ExamView() {
                         />
                       </div>
                     )}
-                    <td className="">
-                      {exam.imageURL && (
-                        <img
-                          src={exam.imageURL}
-                          alt="Exam"
-                          style={{ maxWidth: "100px" }}
-                        />
-                      )}
-                    </td>
                   </td>
+                  <td className="">
+                    {exam.imageURL && (
+                      <img
+                        src={exam.imageURL}
+                        alt="Exam"
+                        style={{ maxWidth: "100px" }}
+                      />
+                    )}
+                  </td>
+
                   <td className="border border-gray-600 px-4 py-2">
                     {exam.ICUAdmit}
                   </td>
