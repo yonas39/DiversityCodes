@@ -6,7 +6,7 @@ import "./App.css"
 import Home from "./pages/Home"
 import Navbar from "./components/NavBar" // Import Navbar
 import Admin from "./pages/Admin"
-import AdminView from "pages/ExamView"
+import AdminView from "pages/AdminView"
 import ExamTable from "pages/ExamTable"
 import SinglePatientView from "components/SinglePatientView"
 import SingleExamView from "components/SingleExamView"
