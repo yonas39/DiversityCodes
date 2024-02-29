@@ -108,7 +108,7 @@ function ExamView() {
           />
           {/* CREATE NEW EXAM BUTTON */}
           <Link
-            to="/admin"
+            to="/create-new-exam"
             className="create-new-exam button bg-blue-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded ml-4"
           >
             Create New Exam

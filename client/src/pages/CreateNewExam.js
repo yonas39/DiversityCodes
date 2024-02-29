@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
-const Admin = ({ onAddExam }) => {
+const CreateNewExam = ({ onAddExam }) => {
   const [newExam, setNewExam] = useState({
     patientId: "",
     age: 0,
@@ -128,4 +128,4 @@ const Admin = ({ onAddExam }) => {
   );
 };
 
-export default Admin;
+export default CreateNewExam;
