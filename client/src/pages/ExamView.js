@@ -190,7 +190,7 @@ function ExamView() {
                                 : exam.ImageURL
                             }
                             alt="Exam"
-                            style={{ maxWidth: "20%" }}
+                            style={{ maxWidth: "100px" }}
                           />
                         </div>
                       )}
