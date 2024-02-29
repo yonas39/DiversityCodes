@@ -1,0 +1,47 @@
+/* alert.css */
+
+.alert-add-exam {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.alert-add-exam-content {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.alert-add-exam-message {
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: red;
+}
+
+.alert-add-exam-button {
+    background-color: #4299e1;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.alert-add-exam-button:last-child {
+    margin-right: 0;
+    /* Remove the margin from the last button */
+}
+
+.alert-add-exam-button:hover {
+    background-color: #3182ce;
+}
