@@ -6,6 +6,10 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function ExamView() {
+  // URL const
+  const AWS_URL =
+    "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/";
+
   const [exams, setExams] = useState([]);
   const [error, setError] = useState(null);
 
@@ -176,7 +180,21 @@ function ExamView() {
                     {exam.latestWeight}
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
-                    {exam.ImageURL}
+                    <div className="info-item">
+                      {exam && exam.ImageURL && (
+                        <div className="imageDisplay">
+                          <img
+                            src={
+                              exam.ImageURL.startsWith("COVID-19")
+                                ? AWS_URL + exam.ImageURL
+                                : exam.ImageURL
+                            }
+                            alt="Exam"
+                            style={{ maxWidth: "20%" }}
+                          />
+                        </div>
+                      )}
+                    </div>
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
                     {exam.ICUAdmit}
