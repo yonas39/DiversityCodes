@@ -180,21 +180,22 @@ function ExamView() {
                     {exam.latestWeight}
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
-                    <div className="info-item">
-                      {exam && exam.ImageURL && (
-                        <div className="imageDisplay">
-                          <img
-                            src={
-                              exam.ImageURL.startsWith("COVID-19")
-                                ? AWS_URL + exam.ImageURL
-                                : exam.ImageURL
-                            }
-                            alt="Exam"
-                            style={{ maxWidth: "100px" }}
-                          />
-                        </div>
+                    {exam.ImageURL && (
+                      <img
+                        src={`${AWS_URL}${exam.ImageURL}`}
+                        alt="Exam"
+                        style={{ maxWidth: "100px" }}
+                      />
+                    )}
+                    <td className="">
+                      {exam.imageURL && (
+                        <img
+                          src={exam.imageURL}
+                          alt="Exam"
+                          style={{ maxWidth: "100px" }}
+                        />
                       )}
-                    </div>
+                    </td>
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
                     {exam.ICUAdmit}
