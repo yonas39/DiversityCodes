@@ -1,41 +1,39 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 
 function ExamView() {
-  const [exams, setExams] = useState([]);
-  const [error, setError] = useState(null);
-  const [search, setSearch] = useState("");
+  const [exams, setExams] = useState([])
+  const [error, setError] = useState(null)
+  const [search, setSearch] = useState("")
   const AWS_URL =
-  "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/";
+    "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/"
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_API_BASE_URL}/server/exams`
-        );
+          `${process.env.REACT_APP_API_BASE_URL}/server/exams`,
+        )
         if (!response.ok) {
           throw new Error(
-            `Network response was not ok - Status: ${response.status}`
-          );
+            `Network response was not ok - Status: ${response.status}`,
+          )
         }
-        const data = await response.json();
-        console.log("Fetched data:", data);
+        const data = await response.json()
+        console.log("Fetched data:", data)
         if (Array.isArray(data)) {
-          setExams(data);
+          setExams(data)
         } else {
-          setError("Unexpected data format from the API");
+          setError("Unexpected data format from the API")
         }
       } catch (error) {
-        setError(error);
-        console.error("Error fetching exams:", error);
+        setError(error)
+        console.error("Error fetching exams:", error)
       }
-    };
+    }
 
-    fetchData();
-  }, []);
-
-  const navigate = useNavigate();
+    fetchData()
+  }, [])
 
   return (
     <div className="admin-container bg-gray-800 text-white p-6 rounded-lg shadow-lg">
@@ -79,7 +77,7 @@ function ExamView() {
               .filter((exam) =>
                 exam.patientId
                   .toLowerCase()
-                  .includes(search.trim().toLowerCase())
+                  .includes(search.trim().toLowerCase()),
               )
               .map((exam) => (
                 <tr key={exam._id} className="bg-gray-800">
@@ -122,6 +120,15 @@ function ExamView() {
                         style={{ maxWidth: "100px" }}
                       />
                     )}
+                    <td className="">
+                      {exam.imageURL && (
+                        <img
+                          src={exam.imageURL}
+                          alt="Exam"
+                          style={{ maxWidth: "100px" }}
+                        />
+                      )}
+                    </td>
                   </td>
                   <td className="border border-gray-600 px-4 py-2">
                     {exam.ICUAdmit}
@@ -138,7 +145,7 @@ function ExamView() {
         </table>
       )}
     </div>
-  );
+  )
 }
 
-export default ExamView;
+export default ExamView
