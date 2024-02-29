@@ -5,8 +5,8 @@ import "./App.css"
 // import ExamView from "./pages/ExamView";
 import Home from "./pages/Home"
 import Navbar from "./components/NavBar" // Import Navbar
-import Admin from "./pages/Admin"
-import AdminView from "pages/ExamView"
+import CreateNewExam from "./pages/CreateNewExam"
+import AdminView from "pages/AdminView"
 import ExamTable from "pages/ExamTable"
 import SinglePatientView from "components/SinglePatientView"
 import SingleExamView from "components/SingleExamView"
@@ -19,7 +19,7 @@ function App() {
 			<Navbar /> {/* Render Navbar */}
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="admin" element={<Admin />} />
+				<Route path="create-new-exam" element={<CreateNewExam />} />
 				<Route path="examTable" element={<ExamTable />} />
 				<Route path="adminView" element={<AdminView />} />
 
