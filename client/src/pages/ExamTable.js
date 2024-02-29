@@ -159,7 +159,8 @@ function ExamView() {
 												</Modal>
 											</div>
 										)}
-										{/* <td className="">
+									</td>
+									{/* <td className="">
                       {exam.imageURL && (
                         <img
                           src={exam.imageURL}
@@ -168,6 +169,7 @@ function ExamView() {
                         />
                       )}
                     </td> */}
+									<td>
 										{exam.imageURL && (
 											<img
 												src={exam.imageURL}

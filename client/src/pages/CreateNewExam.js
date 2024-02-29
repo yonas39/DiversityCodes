@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import '../alert.css';
 
 const CreateNewExam = ({ onAddExam }) => {
   const [newExam, setNewExam] = useState({
@@ -13,10 +14,16 @@ const CreateNewExam = ({ onAddExam }) => {
     keyFindings: "",
     brixiaScores: "",
     imageURL: "",
-    ICU_Admit: "", 
-    numberOfAdmits: 0, 
-    mortality: "" 
+    ICU_Admit: "",
+    numberOfAdmits: 0,
+    mortality: ""
   });
+
+  let navigate = useNavigate();
+
+  // Add a new state variable for the alert
+  const [showAlert, setShowAlert] = useState(false);
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,8 +32,12 @@ const CreateNewExam = ({ onAddExam }) => {
       [name]: value,
     }));
   };
-
   const handleAddExam = () => {
+    // Show the alert when the "Add Exam" button is clicked
+    setShowAlert(true);
+  };
+
+  const confirmAddExam = () => {
     axios.post('http://localhost:9000/server/exams', newExam)
       .then(response => {
         console.log(response);
@@ -44,10 +55,14 @@ const CreateNewExam = ({ onAddExam }) => {
           numberOfAdmits: 0,
           mortality: ""
         });
+        navigate('/adminView');
       })
       .catch(error => {
         console.error(error);
       });
+
+    // Hide the alert when the "Confirm" button is clicked
+    setShowAlert(false);
   };
 
   return (
@@ -116,8 +131,33 @@ const CreateNewExam = ({ onAddExam }) => {
           >
             Add Exam
           </button>
-          <Link 
-            to="/adminView" 
+
+          {/* Alert */}
+          {showAlert && (
+            <div className="alert-add-exam">
+              <div className="alert-add-exam-content">
+                <p className="alert-add-exam-message">
+                  Are you sure you want to add this exam?
+                </p>
+                <div>
+                  <button
+                    onClick={confirmAddExam}
+                    className="alert-add-exam-button"
+                  >
+                    Add Exam
+                  </button>
+                  <button
+                    onClick={() => setShowAlert(false)}
+                    className="alert-add-exam-button"
+                  >
+                    Make Changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+          <Link
+            to="/adminView"
             className="button bg-blue-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mt-4 ml-4"
           >
             Back

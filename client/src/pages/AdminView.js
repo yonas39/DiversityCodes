@@ -26,9 +26,12 @@ function ExamView() {
 	/////////////////////////////////////////////////////
 	/////////DELETE CONFIRMATION COMPLETED !!!!!!!!!! ///
 	/////////////////////////////////////////////////////
-	const handleDeleteExam = async (examId) => {
-		setExamToDelete(examId)
-		setShowConfirmation(true)
+	const handleDeleteExam = (examId) => {
+		const userConfirmation = window.confirm("Are you sure you want to delete this exam?");
+		if (userConfirmation) {
+			setExamToDelete(examId);
+			confirmDelete();
+		}
 	}
 	const confirmDelete = async () => {
 		// console.log(alert("DELETE BUTTON CLICKED"));
