@@ -1,4 +1,3 @@
-
 // import React, { useEffect, useState } from "react"
 // import { useParams } from "react-router-dom"
 
@@ -7,6 +6,9 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const SingleExamView = () => {
+  // URL
+  const AWS_URL =
+    "https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/";
 
   const [exam, setExam] = useState(null);
   const { patientId, examId } = useParams();
@@ -25,7 +27,10 @@ const SingleExamView = () => {
   }, [patientId, examId]);
 
   return (
-    <div className="admin-container bg-gray-800 text-white p-6 rounded-lg shadow-lg" style={{ maxWidth: "1000px", margin: "0 auto" }}>
+    <div
+      className="admin-container bg-gray-800 text-white p-6 rounded-lg shadow-lg"
+      style={{ maxWidth: "1000px", margin: "0 auto" }}
+    >
       <div className="info-container">
         <div className="info-column">
           <div className="patient-info">
@@ -116,7 +121,11 @@ const SingleExamView = () => {
               />
               {exam && exam.ImageURL && (
                 <div className="imageDisplay">
-                  <img src={exam.ImageURL} alt="Exam" style={{ maxWidth: '100%' }} />
+                  <img
+                    src={AWS_URL + exam.ImageURL}
+                    alt="Exam"
+                    style={{ maxWidth: "100%" }}
+                  />
                 </div>
               )}
             </div>
