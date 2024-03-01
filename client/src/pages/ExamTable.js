@@ -16,7 +16,8 @@ function ExamView() {
         )
         if (!response.ok) {
           throw new Error(
-            `Network response was not ok - Status: ${response.status}`
+            // `Network response was not ok - Status: ${response.status}`
+            `https://diversitycodes-api.onrender.com`
           )
         }
         const data = await response.json()
